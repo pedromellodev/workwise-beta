@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      body {
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .card {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .card-header {
+        background: #007bff;
+        color: #fff;
+        border-bottom: none;
+        border-radius: 12px 12px 0 0;
+        text-align: center;
+      }
+      .card-body {
+        padding: 2rem;
+      }
+      .form-control {
+        border-radius: 25px;
+      }
+      .btn-primary {
+        background: #007bff;
+        border: none;
+        border-radius: 25px;
+      }
+      .btn-primary:hover {
+        background: #0056b3;
+      }
+      .response-message {
+        margin-top: 1rem;
+        text-align: center;
+      }
+      .text-success {
+        color: #28a745;
+      }
+      .text-danger {
+        color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">
+        <h4>Workwise</h4>
+      </div>
+      <div class="card-body">
+        <form id="register-form">
+          <div class="form-group">
+            <label for="username">Usuário:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Senha:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Cadastrar
+          </button>
+        </form>
+        <p id="response-message" class="response-message"></p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      document
+        .getElementById("register-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          fetch("/api/employees/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, email, password }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const responseMessage =
+                document.getElementById("response-message");
+              if (data.success) {
+                responseMessage.textContent = data.success;
+                responseMessage.classList.add("text-success");
+
+                setTimeout(() => {
+                  window.location.href = "/login/";
+                }, 1000);
+              } else {
+                responseMessage.textContent = data.error;
+                responseMessage.classList.add("text-danger");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    </script>
+  </body>
+</html>
