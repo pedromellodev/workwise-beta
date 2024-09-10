@@ -13,7 +13,7 @@ from typing import List
 from django.shortcuts import get_object_or_404
 from django.forms import model_to_dict
 from asgiref.sync import sync_to_async
-from workspace.utils.crypto import cryptografia
+from core.utils.crypto import cryptografia
 
 # TODOs: Melhorar lógica das subRoutes para estarem 100 relacionadas com as tabelas pai(Funcionario e Contrato)
 # TODOs: Arrumar lógica do metodo delete na SubRouter

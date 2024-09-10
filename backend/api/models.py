@@ -1,7 +1,7 @@
 from django.db import models
-from funcionarios.models import FuncProfile
+from employees.models import Employee
 from datetime import datetime
-from workspace.utils.validators import RgValidator, CPFValidator, PISValidator
+from core.utils.validators import RgValidator, CPFValidator, PISValidator
 from .constants import (
     funci_escolaridade, funci_status, banco_choices,
     banco_tipo, cargo_choices, contrato_empresa,
@@ -21,7 +21,7 @@ class BaseModel(models.Model):
         abstract = True
 
 class Funcionario(BaseModel):
-    profile = models.OneToOneField(FuncProfile, on_delete=models.DO_NOTHING, blank=True, null=True)
+    profile = models.OneToOneField(Employee, on_delete=models.DO_NOTHING, blank=True, null=True)
     nome = models.CharField(max_length=50, blank=False)
     rg = models.CharField(
         max_length=12, 
