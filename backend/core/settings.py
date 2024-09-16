@@ -58,10 +58,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'data_db',
-        'USER': 'django',
-        'PASSWORD': 'django#7549',
+        'USER': 'root',
+        'PASSWORD': '123456',
         'HOST': '127.0.0.1',
-        'PORT': 3306
+        'PORT': 3302
     }
 }
 
@@ -106,3 +106,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+# * Chave secreta do Fernet, não apague.
+FERNET_SECRET_KEY = 'hzCLvHYSXZ-0xL_nziT9AepdgDhumcdV7TSkMUDDjzg='
+
+from django.conf.locale.es import formats as es_formats
+
+es_formats.DATETIME_FORMAT = "d M Y H:i:s"

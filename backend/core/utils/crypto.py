@@ -2,7 +2,7 @@ from cryptography.fernet import Fernet
 from django.db.models.signals import pre_save, post_init
 from django.dispatch import receiver
 from django.http import JsonResponse
-from workspace import settings
+from core import settings
 
 # * O fernet é uma opção bem fácil de criptografia de campos que pode ser usado, a lógica da classe
 # * tá pronta, só falta mesmo aplicar na hora de criação de objs com campos sensiveis
