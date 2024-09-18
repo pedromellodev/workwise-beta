@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "corsheaders",
     'employees',
     'api'
     ]
@@ -28,6 +29,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -115,3 +117,5 @@ FERNET_SECRET_KEY = 'hzCLvHYSXZ-0xL_nziT9AepdgDhumcdV7TSkMUDDjzg='
 from django.conf.locale.es import formats as es_formats
 
 es_formats.DATETIME_FORMAT = "d M Y H:i:s"
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
