@@ -15,7 +15,7 @@ def register(request, payload: RegisterSchema):
         username=payload.username, email=payload.email, password=payload.password
     )
     user.save()
-    return {"success": "User created successfully"}
+    return {"is_staff": user.is_staff, "username": user.username}
 
 
 @router.post("/login")
@@ -24,5 +24,5 @@ def login_view(request, payload: LoginSchema):
 
     if user is not None:
         login(request, user)
-        return {"success": "Logged in successfully"}
+        return {"is_staff": user.is_staff, "username": user.username}
     return {"error": "Invalid username or password"}
