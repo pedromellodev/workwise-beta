@@ -1,3 +1,4 @@
+import { run } from "node:test";
 import Cookies from "universal-cookie";
 
 const cookie = new Cookies();
@@ -11,7 +12,8 @@ type formData = {
 export async function userLogin(data: formData) {
 	try {
 		const response = await fetch("http://127.0.0.1:8000/users/login", {
-			method: "POST",
+			method: "POST",	
+			credentials: "include",
 			headers: {
 				Accept: "application/json",
 				"Content-Type": "application/json",

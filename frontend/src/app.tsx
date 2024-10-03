@@ -5,5 +5,5 @@ import { UserRouter } from "./routes/user.route";
 export function App() {
 	const { auth } = useAuthContext();
 	console.log(auth);
-	return auth?.is_staff === true ? <AdminRouter /> : <UserRouter />;
+	return auth?.is_staff === true ? <UserRouter /> : <AdminRouter />;
 }
