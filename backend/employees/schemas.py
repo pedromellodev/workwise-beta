@@ -1,7 +1,7 @@
 from ninja import Schema
 
 class EmployeeSchema(Schema):
-    id: int
+    id: int 
     first_name: str
     last_name: str
     email: str
@@ -12,5 +12,6 @@ class RegisterSchema(Schema):
     password: str
 
 class LoginSchema(Schema):
+    cpf: str
     username: str
     password: str

@@ -1,21 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LoginPage } from "./pages/loginPage";
-import { Home } from "./pages/homePage";
-import { useAuthContext } from "./components/cli/AuthContext";
-// import { useContext } from "react";
-// import { AuthContext } from "./components/cli/AuthContext";
+import { useAuthContext } from "./cli/AuthContext";
+import { AdminRouter } from "./routes/admin.route";
+import { UserRouter } from "./routes/user.route";
 
 export function App() {
 	const { auth } = useAuthContext();
 	console.log(auth);
-	return (
-		<>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<LoginPage />} />
-					<Route path="/home" element={<Home />} />
-				</Routes>
-			</BrowserRouter>
-		</>
-	);
+	return auth?.is_staff === true ? <AdminRouter /> : <UserRouter />;
 }

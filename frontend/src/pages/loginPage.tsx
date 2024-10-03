@@ -1,22 +1,14 @@
 import workwise_logo from "../assets/workwise_logo.svg";
-import { FormsLogin } from "../components/func/loginForms"
-
-// export interface User {
-// 	success: string,
-// }
-// export interface LoginData {
-// 	username: string;
-// 	password: string;
-// 	}
-// export interface LoginResponse {
-// 	token: string;
-// 	user: User;
-// }
-
-// export default function Login() {
-// 	const [loginData, setLoginData] = React.useState<LoginData>({ username: '',
+import { FormsLogin } from "../components/func/loginForms";
+import { redirect } from "react-router-dom";
+import { useAuthContext } from "../cli/AuthContext";
 
 export function LoginPage() {
+	const { isLoggedIn } = useAuthContext();
+
+	if (isLoggedIn) {
+		return redirect("/home");
+	}
 	return (
 		<>
 			<div className="h-screen flex flex-col items-center justify-center">

@@ -60,10 +60,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'data_db',
-        'USER': 'root',
-        'PASSWORD': '123456',
+        'USER': 'django',
+        'PASSWORD': 'django#7549',
         'HOST': '127.0.0.1',
-        'PORT': 3302
+        'PORT': 3306
     }
 }
 
@@ -119,3 +119,13 @@ from django.conf.locale.es import formats as es_formats
 es_formats.DATETIME_FORMAT = "d M Y H:i:s"
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:5173"]
+CSRF_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ORIGINS_WHITELIST = ["http://localhost:5173"]
+
+CSRF_COOKIE_SAMESITE = 'Lax'  # Tente 'Lax' ou 'None' se estiver acessando de diferentes origens
+CSRF_COOKIE_SECURE = False     # Deve ser False para desenvolvimento local sem HTTPS
+SESSION_COOKIE_SECURE = False  # Deve ser False para desenvolvimento local
+
+SESSION_COOKIE_AGE = 86400  # 1 dia = 86400 segundos
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Se True, expira ao fechar o navegador
