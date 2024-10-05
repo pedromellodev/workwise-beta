@@ -1,9 +1,8 @@
 import { ListaFunc } from "../components/func/listaFunc";
 
-export function ContratosPage() {
+export function Contratos() {
 	return (
 		<>
-			{/* <div className="w-full h-full px-[27px] py-[105px] justify-start items-start gap-[29px] inline-flex"> */}
 			<div className="h-screen flex flex-col items-center justify-center ">
 				<div className="w- rounded-md flex-col justify-start items-start gap-2.5 inline-flex">
 					<div className="self-stretch h-[515px] rounded flex-col justify-start items-start flex">

@@ -1,13 +1,13 @@
 import workwise_logo from "../assets/workwise_logo.svg";
 import { FormsLogin } from "../components/func/loginForms";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../cli/AuthContext";
 
-export function LoginPage() {
+export function Login() {
 	const { isLoggedIn } = useAuthContext();
-
+	const navigate = useNavigate();
 	if (isLoggedIn) {
-		return redirect("/home");
+		() => navigate("/home");
 	}
 	return (
 		<>

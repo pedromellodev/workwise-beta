@@ -1,5 +1,4 @@
-// biome-ignore lint/style/useImportType: <explanation>
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, type ReactNode, useContext, useState } from "react";
 import Cookies from "universal-cookie";
 
 export type User = {
@@ -28,11 +27,8 @@ export function AuthProvider(props: AuthContextProviderProps) {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [auth, setAuth] = useState<User | null>(null);
 
-	const updateAuth = async (
-		username: string,
-		is_staff: boolean,
-	) => {
-		setAuth({ username, is_staff});
+	const updateAuth = async (username: string, is_staff: boolean) => {
+		setAuth({ username, is_staff });
 		setIsLoggedIn(true);
 		// const token = await cookies.get('token');
 		// cookies.set("authToken", token, {

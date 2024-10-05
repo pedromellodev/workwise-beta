@@ -1,24 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { getFuncionarios } from "../../http/funcionarios/queriesFuncionarios";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function ListaFunc() {
-	const navigate = useNavigate();
 	const { data } = useQuery({
-		queryKey: ["func"],
+		queryKey: ["funcionarios"],
 		queryFn: getFuncionarios,
 		staleTime: 1000 * 60,
-		// queryFn: async () => {
-		// 	const response = await axios.get(
-		// 		"http://127.0.0.1:8000/api/funcionarios/",
-		// 	);
-		// 	return response.data;
-		// },
 	});
 
 	if (!data) {
 		return null;
 	}
+	const teste = data[0];
+	console.log(teste);
 	const valor = data.map((valore) => {
 		return `valor: ${valore.cep}`;
 	});
@@ -29,21 +24,19 @@ export function ListaFunc() {
 			<div className="w-[920px] h-[62px] px-11 py-6 bg-white flex-col justify-center items-start gap-2.5 flex">
 				{data.map((valor) => {
 					return (
-						<div
-							key={valor.nome}
-							onClick={() => navigate(`${valor.nome}`)}
-							className="w-[825px] justify-start items-center gap-[129px] inline-flex"
-						>
-							<div className="w-[271px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
-								{valor.nome}
+						<Link to={`/contratos/${valor.nome}`} key={valor.nome}>
+							<div className="w-[825px] justify-start items-center gap-[129px] inline-flex">
+								<div className="w-[271px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
+									{valor.nome}
+								</div>
+								<div className="w-[183px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
+									{valor.cpf}
+								</div>
+								<div className="w-[86px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
+									{valor.status}
+								</div>
 							</div>
-							<div className="w-[183px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
-								{valor.cpf}
-							</div>
-							<div className="w-[86px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
-								{valor.status}
-							</div>
-						</div>
+						</Link>
 					);
 				})}
 			</div>
