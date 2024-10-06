@@ -50,14 +50,11 @@ const config = {
 		"Content-Type": "application/json",
 	},
 };
-const url = "http://127.0.0.1:8000/api/";
+const url = "http://127.0.0.1:8000/api/funcionarios/";
 
 export async function getFuncionarios(): Promise<Funcionarios> {
 	try {
-		const response = await axios.get(
-			"http://127.0.0.1:8000/api/funcionarios/",
-			config,
-		);
+		const response = await axios.get(url, config);
 		return response.data;
 	} catch (error) {
 		console.error("Erro na query:", error);
@@ -67,10 +64,7 @@ export async function getFuncionarios(): Promise<Funcionarios> {
 
 export async function getFuncionario(nome: string): Promise<Funcionario> {
 	try {
-		const response = await axios.get(
-			`http://127.0.0.1:8000/api/funcionarios/${nome}/`,
-			config,
-		);
+		const response = await axios.get(`${url}${nome}/`, config);
 		return response.data;
 	} catch (error) {
 		console.error("Erro na query:", error);

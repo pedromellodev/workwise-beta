@@ -1,4 +1,4 @@
-import { ListaFunc } from "../components/func/listaFunc";
+import { ListaFunc } from "../components/func/lista.func";
 
 export function Contratos() {
 	return (

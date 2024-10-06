@@ -1,5 +1,5 @@
 import workwise_logo from "../assets/workwise_logo.svg";
-import { FormsLogin } from "../components/func/loginForms";
+import { FormsLogin } from "../components/func/login.func";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../cli/AuthContext";
 
