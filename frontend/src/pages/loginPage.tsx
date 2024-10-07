@@ -1,35 +1,29 @@
 import workwise_logo from "../assets/workwise_logo.svg";
-import { FormsLogin } from "../components/func/loginForms"
+import React from 'react';
+import FormsLogin from '../components/func/loginForms';
 
-// export interface User {
-// 	success: string,
-// }
-// export interface LoginData {
-// 	username: string;
-// 	password: string;
-// 	}
-// export interface LoginResponse {
-// 	token: string;
-// 	user: User;
-// }
+const Home: React.FC = () => {
+  return (
+    <div className="flex h-screen items-center justify-center bg-gray-100">
+      {/* Sidebar */}
+      <div className="absolute top-0 left-0 h-full w-64 p-6 bg-purple-600 text-white flex flex-col justify-center shadow-lg">
+        <h5 className="text-lg font-semibold mb-4">Esqueceu a senha?</h5>
+        <p className="mb-6">Recupere ela aqui.</p>
+        <a
+          href="/register"
+          className="py-2 px-4 bg-white text-purple-600 rounded-full hover:bg-gray-200 transition duration-300"
+        >
+          Recuperar Senha
+        </a>
+      </div>
 
-// export default function Login() {
-// 	const [loginData, setLoginData] = React.useState<LoginData>({ username: '',
+      {/* Cartão de Login */}
+      <div className="w-full max-w-lg p-10 bg-white rounded-lg shadow-md">
+        <img src={workwise_logo} alt="Logo" className="w-24 h-24 mx-auto mb-6" />
+        <div className="text-center text-xl font-semibold mb-8">Bem-vindo(a)</div>
+        <FormsLogin /> {/* Componente de Formulário */}
+      </div>
+    </div>
+  );
+};
 
-export function LoginPage() {
-	return (
-		<>
-			<div className="h-screen flex flex-col items-center justify-center">
-				<div className="h-4/5 w-4/6 bg-slate-200 flex flex-col items-center justify-center gap-8">
-					<div className="flex flex-col items-center justify-center">
-						<img src={workwise_logo} alt="WorkWise Logo" />
-						<h1 className="text-3xl font-medium leading-relaxed max-w-80 text-center">
-							Bem-Vindo(a)!
-						</h1>
-					</div>
-					<FormsLogin />
-				</div>
-			</div>
-		</>
-	);
-}
