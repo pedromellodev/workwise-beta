@@ -66,13 +66,13 @@ class Funcionario(BaseModel):
     seguro = models.BooleanField(default=False, blank=True)
     is_active = models.BooleanField(default=True)
     telefone = models.CharField(
-        max_length=11,
+        max_length=50,
         blank=True,
         null=False,
         help_text="Coloque no seguinte formato: 00123456789",
     )
     celular = models.CharField(max_length=100, blank=True)
-    cep = models.CharField(max_length=8, blank=True, null=False)
+    cep = models.CharField(max_length=9, blank=True, null=False)
     rua = models.CharField(max_length=100, blank=True)
     numero = models.IntegerField(blank=True, null=False, default=None)
     distrito = models.CharField(max_length=100, blank=True, null=False, default=None)

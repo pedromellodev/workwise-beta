@@ -1,6 +1,6 @@
 import axios from "axios";
 
-type Funcionarios = {
+export type Funcionarios = {
 	id: number;
 	profile_id: number | null;
 	nome: string;

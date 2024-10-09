@@ -1,45 +1,33 @@
-import { useQuery } from "@tanstack/react-query";
-import { getFuncionarios } from "../../http/funcionarios/queriesFuncionarios";
+import type { Funcionarios } from "../../http/funcionarios/queriesFuncionarios";
 import { Link } from "react-router-dom";
 
-export function ListaFunc() {
-	const { data } = useQuery({
-		queryKey: ["funcionarios"],
-		queryFn: getFuncionarios,
-		staleTime: 1000 * 60,
-	});
+type RenderComponentProps = {
+	data: Funcionarios;
+};
 
-	if (!data) {
-		return null;
-	}
-	const teste = data[0];
-	console.log(teste);
-	const valor = data.map((valore) => {
-		return `valor: ${valore.cep}`;
-	});
-	console.log(data);
-
+type RenderComponentType = (
+	props: RenderComponentProps,
+) => JSX.Element | null | undefined;
+export const ListaFunc: RenderComponentType = ({ data }) => {
 	return (
-		<div className="self-stretch h-[682px] flex-col justify-start items-start flex">
-			<div className="w-[920px] h-[62px] px-11 py-6 bg-white flex-col justify-center items-start gap-2.5 flex">
-				{data.map((valor) => {
-					return (
-						<Link to={`/contratos/${valor.nome}`} key={valor.nome}>
-							<div className="w-[825px] justify-start items-center gap-[129px] inline-flex">
-								<div className="w-[271px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
-									{valor.nome}
-								</div>
-								<div className="w-[183px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
-									{valor.cpf}
-								</div>
-								<div className="w-[86px] text-center text-[#1f1f1f] text-2xl font-normal font-['Alata']">
-									{valor.status}
-								</div>
-							</div>
-						</Link>
-					);
-				})}
-			</div>
-		</div>
+		<>
+			{data.map((valor) => {
+				return (
+					<Link to={`/contratos/${valor.nome}`} key={valor.nome}>
+						<div className="block w-[300px] max-w-sm p-6 text-ellipsis truncate whitespace-nowrap bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+							<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+								{valor.nome}
+							</h5>
+							<p className="font-extrabold text-gray-700 dark:text-gray-400">
+								CPF: {valor.cpf}
+							</p>
+							<p className="font-extrabold text-gray-700 dark:text-gray-400">
+								Status: {valor.status}
+							</p>
+						</div>
+					</Link>
+				);
+			})}
+		</>
 	);
-}
+};
