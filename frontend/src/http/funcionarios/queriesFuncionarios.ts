@@ -1,6 +1,6 @@
 import axios from "axios";
 
-type Funcionarios = {
+export type Funcionarios = {
 	id: number;
 	profile_id: number | null;
 	nome: string;
@@ -22,7 +22,7 @@ type Funcionarios = {
 	complemento: string;
 }[];
 
-type Funcionario = {
+export type Funcionario = {
 	id: number;
 	profile_id: number | null;
 	nome: string;
