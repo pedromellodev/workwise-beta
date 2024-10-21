@@ -40,17 +40,15 @@ def register(request, payload: RegisterSchema):
 @method_decorator(csrf_protect, name='dispatch')
 @router.post("/login", auth=None)
 async def login_view(request, payload: LoginSchema):
-    print(payload.dict())
     funcionario = Funcionario.objects.filter(cpf=payload.cpf).exists()
     if funcionario:
         user = User.objects.filter(username=payload.username).first()
-        if User.objects.filter(username=payload.username).exists(): 
+        if user: 
             try:
                 user = await aauthenticate(username=payload.username, password=payload.password)
-                print(user is None)
                 if user is not None:
                     await alogin(request, user)
-                    return {"data": {"success": "User authenticated", "user": {"is_staff": user.is_staff, "username": user.username}}, "status": HttpResponse.status_code}
+                    return {"data": {"success": True, "user": {"is_staff": user.is_staff, "username": user.username}}, "redirect":"/home"}
             except:
                 return {"data": {"error": "Internal Server Error"}, "status": 500}
         else:
