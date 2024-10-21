@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 import CSRFToken from "./CSRFToken";
 
 type forms = {
-	cpf: string;
-	username: string;
+	email: string;
 	password: string;
 };
 
@@ -49,20 +48,14 @@ export function FormsLogin() {
 						id="username"
 						className="rounded py-2 px-4 w-80"
 						type="text"
-						placeholder="Nome"
-						{...register("username")}
+						placeholder="Email"
+						{...register("email")}
 					/>
 					<input
 						className="rounded py-2 px-4 w-80"
 						type="password"
 						placeholder="Senha"
 						{...register("password")}
-					/>
-					<input
-						className="rounded py-2 px-4 w-80"
-						type="text"
-						placeholder="Cpf"
-						{...register("cpf")}
 					/>
 				</div>
 				<div className="flex justify-between w-80">

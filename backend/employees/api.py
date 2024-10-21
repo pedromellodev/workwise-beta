@@ -40,12 +40,10 @@ def register(request, payload: RegisterSchema):
 @method_decorator(csrf_protect, name='dispatch')
 @router.post("/login", auth=None)
 async def login_view(request, payload: LoginSchema):
-    funcionario = Funcionario.objects.filter(cpf=payload.cpf).exists()
-    if funcionario:
-        user = User.objects.filter(username=payload.username).first()
+        user = User.objects.filter(email=payload.email).first()
         if user: 
             try:
-                user = await aauthenticate(username=payload.username, password=payload.password)
+                user = await aauthenticate(email=payload.email, password=payload.password)
                 if user is not None:
                     await alogin(request, user)
                     return {"data": {"success": True, "user": {"is_staff": user.is_staff, "username": user.username}}, "redirect":"/home"}
@@ -53,8 +51,6 @@ async def login_view(request, payload: LoginSchema):
                 return {"data": {"error": "Internal Server Error"}, "status": 500}
         else:
             return {"data": {"error": "User not found"}, "status": 404}
-    else:
-        return {"data": {"error": "Funcionario not found"}, "status": 404}
         
 @router.post("/logout")
 def logout_view(request):
