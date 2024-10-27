@@ -43,25 +43,25 @@ def register(request, payload: RegisterSchema):
 # Ph: Função de login
 @router.post("/login", auth=None)
 async def login_view(request, payload: LoginSchema):
-    print(payload.dict())
-    funcionario = Funcionario.objects.filter(cpf=payload.cpf).exists()
-    if funcionario:
-        user = User.objects.filter(username=payload.username).first()
-        if User.objects.filter(username=payload.username).exists(): 
+        user = User.objects.filter(email=payload.email).first()
+        if user: 
             try:
-                user = await aauthenticate(username=payload.username, password=payload.password)
-                print(user is None)
+                user = await aauthenticate(email=payload.email, password=payload.password)
                 if user is not None:
                     await alogin(request, user)
-                    return {"data": {"success": "User authenticated", "user": {"is_staff": user.is_staff, "username": user.username}}, "status": HttpResponse.status_code}
+                    return {"data": {"success": True, "user": {"is_staff": user.is_staff, "username": user.username}}, "redirect":"/home"}
             except:
                 return {"data": {"error": "Internal Server Error"}, "status": 500}
         else:
             return {"data": {"error": "User not found"}, "status": 404}
+<<<<<<< HEAD
     else:
         return {"data": {"error": "Funcionario not found"}, "status": 404}
 
 # Ph: Função Logout
+=======
+        
+>>>>>>> 5dd633b2478d081b52f71ee936d78607bc1a05d5
 @router.post("/logout")
 def logout_view(request):
     print(request.user)

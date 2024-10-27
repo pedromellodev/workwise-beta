@@ -13,5 +13,5 @@ class RegisterSchema(Schema):
 
 class LoginSchema(Schema):
     cpf: str
-    username: str
+    email: str
     password: str

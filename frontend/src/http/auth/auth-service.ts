@@ -3,8 +3,7 @@ import Cookies from "universal-cookie";
 const cookie = new Cookies();
 
 type formData = {
-	cpf: string;
-	username: string;
+	email: string;
 	password: string;
 };
 
