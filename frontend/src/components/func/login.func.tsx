@@ -1,4 +1,3 @@
-// biome-ignore lint/style/useImportType: <Sinceramente, ainda não sei>
 import { SubmitHandler, useForm } from "react-hook-form";
 import { userLogin } from "../../http/auth/auth-service";
 import { useQuery } from "@tanstack/react-query";
@@ -19,14 +18,12 @@ export function FormsLogin() {
 
 	const onSubmit: SubmitHandler<forms> = async (data: forms) => {
 		try {
-			console.log(data);
 			const response = await userLogin(data);
 			if (response.data.error) {
 				alert(response.data.error);
 			} else {
 				const responseBody = response.data.user;
 				setAuth(responseBody.username, responseBody.is_staff);
-				console.log(isLoggedIn);
 				navigate("/home");
 			}
 		} catch (error) {
@@ -40,38 +37,29 @@ export function FormsLogin() {
 	});
 
 	return (
-		<div className="flex flex-col items-center justify-center gap-2">
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<CSRFToken />
-				<div className="flex flex-col items-center justify-center gap-9">
-					<input
-						id="username"
-						className="rounded py-2 px-4 w-80"
-						type="text"
-						placeholder="Email"
-						{...register("email")}
-					/>
-					<input
-						className="rounded py-2 px-4 w-80"
-						type="password"
-						placeholder="Senha"
-						{...register("password")}
-					/>
-				</div>
-				<div className="flex justify-between w-80">
-					<a
-						href="www.youtube.com"
-						className="text-sm text-blue-500 hover:text-blue-700"
-					>
-						Esqueci minha senha
-					</a>
-				</div>
-				<div className="flex flex-col items-center justify-center gap-2">
-					<Button className="mt-2" type="submit" disabled={isLoading}>
-						Entrar
-					</Button>
-				</div>
-			</form>
-		</div>
+		<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center gap-6 w-full">
+			<CSRFToken />
+			<div className="w-full flex flex-col gap-4">
+				<label htmlFor="email" className="text-sm font-semibold text-gray-700">Email</label>
+				<input
+					id="email"
+					className="rounded-md py-2 px-4 w-full border border-gray-300"
+					type="text"
+					placeholder="Digite seu email"
+					{...register("email")}
+				/>
+				<label htmlFor="password" className="text-sm font-semibold text-gray-700">Senha</label>
+				<input
+					id="password"
+					className="rounded-md py-2 px-4 w-full border border-gray-300"
+					type="password"
+					placeholder="Digite sua senha"
+					{...register("password")}
+				/>
+			</div>
+			<Button className="bg-purple-500 text-black py-2 px-6 rounded-md hover:bg-purple-600 transition w-full" type="submit" disabled={isLoading}>
+				Entrar
+			</Button>
+		</form>
 	);
 }
