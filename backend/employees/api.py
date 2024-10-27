@@ -25,10 +25,11 @@ def CheckAuthenticated(request):
     except:
         return { 'error': 'Something went wrong when checking authentication status' }
 
+# Ph: Função de registros de usuário
 @router.post("/register", auth=None)
 def register(request, payload: RegisterSchema):
     if User.objects.filter(username=payload.username).exists():
-        return {"error": "Username already exists"}
+        return {"error": "Nome de usuário já existente."}
 
     user = User.objects.create_user(
         username=payload.username, email=payload.email, password=payload.password
@@ -38,6 +39,8 @@ def register(request, payload: RegisterSchema):
 
 
 @method_decorator(csrf_protect, name='dispatch')
+
+# Ph: Função de login
 @router.post("/login", auth=None)
 async def login_view(request, payload: LoginSchema):
     print(payload.dict())
@@ -57,7 +60,8 @@ async def login_view(request, payload: LoginSchema):
             return {"data": {"error": "User not found"}, "status": 404}
     else:
         return {"data": {"error": "Funcionario not found"}, "status": 404}
-        
+
+# Ph: Função Logout
 @router.post("/logout")
 def logout_view(request):
     print(request.user)
@@ -69,10 +73,13 @@ def logout_view(request):
 
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
+
+# Ph: Método csrf-cookie de segurança que envia os dados ao usuário
 @router.get("/csrf-cookie", auth=None)
 def get_csrf_token(request):
     return {"success": "CSRF cookie set"}
 
+# Ph: Função Atualização dos usuários com base nos payloads dos campos de RegisterSchema
 @router.put("/user-update/")
 def update(request, data: RegisterSchema):
     id = request.auth.id
@@ -83,6 +90,7 @@ def update(request, data: RegisterSchema):
     user.save()
     return model_to_dict(user)
 
+# Ph: Função Deleta o usuário logado
 @router.delete("/user-delete/")
 def delete(request):
         user = request.user
@@ -91,6 +99,6 @@ def delete(request):
         try:
             User.objects.filter(id=user.id).delete()
 
-            return { 'success': 'User deleted successfully' }
+            return { 'success': 'Usuário deletado com sucesso.' }
         except:
-            return { 'error': 'Something went wrong when trying to delete user' }
+            return { 'error': 'Algo deu errado ao tentar deletar usuário.' }

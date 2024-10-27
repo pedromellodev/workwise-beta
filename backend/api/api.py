@@ -238,19 +238,3 @@ contrato_router.router.add_router("{id}/avaliacao", avaliacao_router.router)
 contrato_router.router.add_router(
     "{id}/empreasTerceiros", empresa_terceiros_router.router
 )
-
-# bagui complicado desnecessariamente
-# bem paia
-# router.add_router('{nome}/contratos', contrato_router.router)
-#  router.add_router('{nome}/contaBancaria', conta_bancaria_router.router)
-#   router.add_router('{nome}/duracao', duracao_router.router)
-#     router.add_router('{nome}/cargo', cargo_router.router)
-#        router.add_router('{nome}/avaliacao', avaliacao_router.router)
-#            router.add_router('{nome}/empreasTerceiros', empresa_terceiros_router.router)
-#                 router.add_router('{nome}/contratos/{id}/duracao', duracao_router.router)
-#                 router.add_router('{nome}/contratos/{id}/cargo', cargo_router.router)
-#                  router.add_router('{nome}/contratos/{id}/avaliacao', avaliacao_router
-# router.add_router('{nome}/contratos/{id}/empreasTerceiros', empresa_ter
-# router.add_router('{nome}/contratos/{id}/empreasTerceiros', empresa_ter
-
-# router.add_router('{nome}/contratos/{id}/empreasTerceiros', empresa_ter
