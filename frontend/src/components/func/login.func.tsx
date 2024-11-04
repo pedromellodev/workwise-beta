@@ -64,12 +64,12 @@ export function FormsLogin() {
 				/>
 			</div>
 			 {showWarning && (
-                    <p className="text-red-500 text-sm mt-2 transition-opacity duration-500">
+                    <p className="text-purple-500 text-sm mt-2 transition-opacity duration-500">
                         Por favor, preencha os dados corretamente.
                     </p>
                 )}
 
-			<Button className="mt-3 w-80 bg-purple-500 hover:bg-purple-600 text-black-900 font-semibold text-lg py-2 rounded-lg transition-colors duration-300" type="submit" disabled={isLoading}>
+			<Button className="mt-3 w-80 bg-purple-500 hover:bg-purple-600 text-white font-semibold text-lg py-2 rounded-lg transition-colors duration-300" type="submit" disabled={isLoading}>
 				Entrar
 			</Button>
 		</form>
