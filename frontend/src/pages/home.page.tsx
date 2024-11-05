@@ -1,18 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState  } from "react";
 import { useAuthContext } from "../cli/AuthContext";
 import workwise_logo from "../assets/workwise_logo.svg";
+import axios from "axios";
 
 export function Home() {
 	const { auth, isLoggedIn } = useAuthContext();
 	const user = isLoggedIn ? auth : null;
 
-	useEffect(() => {
-		if (isLoggedIn) {
-			console.log("Usuário autenticado:", user);
-		} else {
-			console.log("Usuário não autenticado");
+	const [weatherData, setWeatherData] = useState({
+        temperature: "",
+        date: new Date().toLocaleDateString(),
+        weekday: new Date().toLocaleString("pt-BR", { weekday: "long" })
+});
+
+useEffect(() => {
+	async function fetchWeather() {
+		try {
+			const response = await axios.get(
+				`https://api.weatherapi.com/v1/current.json?key=bcd545c643064e78aa7142754240511&q=SAO_PAULO&lang=pt`
+			);
+			const temp = response.data.current.temp_c + "°C";
+			setWeatherData({
+				...weatherData,
+				temperature: temp,
+				date: new Date().toLocaleDateString(),
+				weekday: new Date().toLocaleString("pt-BR", { weekday: "long" })
+			});
+		} catch (error) {
+			console.error("Erro ao buscar dados climáticos:", error);
 		}
-	}, [isLoggedIn]);
+	}
+	fetchWeather();
+}, []);
 
 	return (
 		<div className="h-screen bg-gradient-to-b from-purple-600 to-blue-400 overflow-hidden flex flex-col items-center">
@@ -23,8 +42,8 @@ export function Home() {
 
 			{/* Temperatura/Data/Dia da semana */}
 			<div className="absolute top-20 right-4 text-white text-right">
-				<p className="text-sm font-medium">27°C | 06/08/2024</p>
-				<p className="text-xs text-gray-200">Terça-feira</p>
+				<p className="text-sm font-medium">{weatherData.temperature} | {weatherData.date}</p>
+				<p className="text-xs text-gray-200">{weatherData.weekday}</p>
 			</div>
 
 			{/* Conteúdo principal */}
