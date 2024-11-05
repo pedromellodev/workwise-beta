@@ -23,7 +23,7 @@ export default {
           detalhes: '#F9A8D4',
         },
         tema: {
-          maior: '#FFFFFF';
+          maior: '#FFFFFF',
           maior_medio: '#CACACA',
           meio: '#5E5E5E',
           menor_medio: '#3F3F3F',
