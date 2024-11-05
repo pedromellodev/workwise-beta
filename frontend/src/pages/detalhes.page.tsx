@@ -23,20 +23,16 @@ export function Detalhes() {
 
 	type RenderComponentType = (
 		props: RenderComponentProps,
-	) => JSX.Element | null | undefined;
+	) => JSX.Element | null;
 
 	const RenderComponent: RenderComponentType = ({ index }) => {
 		switch (index) {
 			case 0:
 				return <Info nomeFuncionario={nomeFuncionarioString} />;
-				// biome-ignore lint/correctness/noUnreachable: <explanation>
-				break;
 			case 1:
 				return <InfoContratos nomeFuncionario={nomeFuncionarioString} />;
-				// biome-ignore lint/correctness/noUnreachable: <explanation>
-				break;
 			default:
-				break;
+				return null; // Retorna null como fallback
 		}
 	};
 
@@ -55,24 +51,8 @@ export function Detalhes() {
 				<div className="h-full flex flex-row items-center justify-around gap-44">
 					<RenderComponent index={isSelected} />
 				</div>
-				{/*	<div>
-						<h1>Detalhes</h1>
-						<p>Este é o detalhes da página</p>
-						<p>{data?.cpf}</p>
-						<p>{data?.escolaridade}</p>
-						<p>{data?.seguro}</p>
-						<p>{data?.celular}</p>
-						<p>{data?.is_active}</p>
-						<p>{data?.telefone}</p>
-						<p>{data?.seguro}</p>
-						<p>{data?.pis}</p>
-					</div>
-
-					<div>
-						<h1>Detalhes</h1>
-						
-					</div>*/}
 			</div>
 		</div>
 	);
 }
+ 
