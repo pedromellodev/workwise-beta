@@ -12,7 +12,7 @@ export function AdminRouter() {
 					<Route path="/" element={<Login />} />
 					<Route path="/home" element={<Home />} />
 					<Route path="/contratos" element={<Contratos />} />
-					<Route path="/contratos/:nomeFuncionario" element={<Detalhes />} />
+					<Route path="/contratos/detalhes" element={<Detalhes />} />
 				</Routes>
 			</BrowserRouter>
 		</>

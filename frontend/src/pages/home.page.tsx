@@ -115,7 +115,7 @@ export function Home() {
             <div className="flex flex-col items-center text-white">
               <div
                 className="bg-white p-4 rounded-full cursor-pointer"
-                onClick={() => navigate("/contrato/avalicoes")}  // Substitua com a rota correspondente
+                onClick={() => navigate("/contratos/detalhes")}  // Substitua com a rota correspondente
                 title="Outro"
               >
                 <img src={avaliacoes_icon} alt="Outro Ícone" className="w-12 h-12" />

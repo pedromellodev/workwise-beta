@@ -28,18 +28,11 @@ const InfoContratos: RenderComponentType = ({ nomeFuncionario }) => {
 	return (
 		<div className="h-full flex flex-row items-center justify-around gap-44">
 			<div>
-				<h1>Detalhes</h1>
-				<p>Este é o detalhes da página</p>
 				<p>{contrato?.carteira_trabalho}</p>
 				<p>{contrato?.empresa_contrada}</p>
 				<p>{contrato?.supervisor}</p>
 				<p>{contrato?.tipo}</p>
-				<p>{contrato?.id}</p>
-				<h1> RECEBA </h1>
-			</div>
-
-			<div>
-				<h1>Detalhes</h1>
+				<p>{contrato?.id}</p>			
 			</div>
 		</div>
 	);

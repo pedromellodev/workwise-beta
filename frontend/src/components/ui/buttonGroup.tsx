@@ -9,7 +9,7 @@ export const ButtonGroup = ({ buttons, isSelected, setIsSelected }: any) => {
 					<Button
 						key={text}
 						className="mt-2"
-						variant={isSelected === index ? "primary" : "secondary"}
+						variant={isSelected === index ? "third" : "fourth"}
 						onClick={() => setIsSelected(index)}
 					>
 						{text}
