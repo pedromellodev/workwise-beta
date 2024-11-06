@@ -3,6 +3,7 @@ import { Search, Plus, Loader2 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import workwise_logo from "../../assets/workwise_logo.svg";
+import { useNavigate } from "react-router-dom";
 
 interface Employee {
   id: number;
@@ -12,24 +13,19 @@ interface Employee {
 }
 
 export default function Contratos() {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/contratos");
+  };
+  
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [isFetching, setIsFetching] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const exampleEmployees: Employee[] = [
-      { id: 1, name: "João Silva", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 2, name: "Maria Oliveira", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 3, name: "Carlos Souza", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
-      { id: 4, name: "Ana Santos", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
-      { id: 1, name: "João Silva", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 2, name: "Maria Oliveira", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 3, name: "Carlos Souza", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
-      { id: 4, name: "Ana Santos", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
-      { id: 1, name: "João Silva", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 2, name: "Maria Oliveira", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 3, name: "Carlos Souza", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
-      { id: 4, name: "Ana Santos", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
       { id: 1, name: "João Silva", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
       { id: 2, name: "Maria Oliveira", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
       { id: 3, name: "Carlos Souza", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
@@ -52,7 +48,7 @@ export default function Contratos() {
         <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
       </div>
 
-      {/* main content and button in the same row */}
+      {/* Main content and button in the same row */}
       <div className="flex p-6 space-x-6">
         {/* Content Section */}
         <div className="flex-grow bg-white rounded-lg shadow-lg p-6">
@@ -84,7 +80,11 @@ export default function Contratos() {
                 </div>
               </li>
               {filteredEmployees.map(employee => (
-                <li key={employee.id} className="bg-gray-100 p-4 rounded-md">
+                <li 
+                  key={employee.id} 
+                  className="bg-gray-100 p-4 rounded-md cursor-pointer" 
+                  onClick={() => navigate("/contratos/detalhes")} // Navega para a página do funcionário específico
+                >
                   <div className="grid grid-cols-3 gap-4">
                     <div>{employee.name}</div>
                     <div>{employee.cpf}</div>
@@ -97,7 +97,7 @@ export default function Contratos() {
         </div>
 
         {/* Button Section */}
-        <div className="flex justify-end items-start" >
+        <div className="flex justify-end items-start">
           <Button variant="primary" className="bg-purple-600 text-white hover:bg-white hover:text-purple-600 transition shadow md">
             <Plus className="mr-2 h-4 w-4" />
             Novo Funcionário
