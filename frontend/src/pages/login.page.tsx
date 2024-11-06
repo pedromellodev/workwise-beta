@@ -8,7 +8,7 @@ export function Login() {
   const { isLoggedIn } = useAuthContext();
   const navigate = useNavigate();
   if (isLoggedIn) {
-    navigate("/home");
+    navigate("/contratos");
   }
 
   return (

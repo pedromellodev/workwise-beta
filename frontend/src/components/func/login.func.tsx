@@ -42,6 +42,10 @@ export function FormsLogin() {
 		queryFn: () => onSubmit,
 	});
 
+	if (isLoggedIn){
+		() => navigate("/home")
+	}
+
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center gap-6 w-full">
 			<CSRFToken />
