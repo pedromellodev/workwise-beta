@@ -97,8 +97,8 @@ export default function Contratos() {
         </div>
 
         {/* Button Section */}
-        <div className="flex justify-end items-start">
-          <Button variant="primary" className="bg-purple-600 text-white hover:bg-purple-700">
+        <div className="flex justify-end items-start" >
+          <Button variant="primary" className="bg-purple-600 text-white hover:bg-white hover:text-purple-600 transition shadow md">
             <Plus className="mr-2 h-4 w-4" />
             Novo Funcionário
           </Button>
