@@ -30,6 +30,11 @@ export default {
           menor: '#1F1F1F',
         }
       },
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+        'shadow-2xl':	'0 25px 50px -12px rgb(0, 0, 0, 0.25)',
+        'md': '0 4px 6px -1px rgb(0, 0, 0, 0.1), 0 2px 4px -2px rgb(0, 0, 0, 0.1)'
+      },
       fonte: {
         
       }

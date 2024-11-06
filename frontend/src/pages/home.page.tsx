@@ -6,6 +6,8 @@ import banco_horas_icon from "../assets/banco_horas_icon.svg"
 import avaliacoes_icon from "../assets/avaliacoes_icon.svg"; 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Bell, ChevronLeft, Edit } from "lucide-react";
+
 
 export function Home() {
   const { logout } = useAuthContext();
@@ -49,10 +51,10 @@ export function Home() {
 
   return (
     <div className="h-screen bg-gradient-to-b from-purple-600 to-blue-400 overflow-hidden flex flex-col items-center">
-      {/* Navbar */}
       <div className="w-full p-3 flex justify-between items-center bg-purple-400">
         <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
-      </div>
+          <Bell className="w-[33px] h-[35px]" />
+        </div>
 
       {/* Temperatura/Data/Dia da semana */}
       <div className="absolute top-20 right-4 text-white text-right">
@@ -85,7 +87,7 @@ export function Home() {
 
         {/* Utilizados com Frequência */}
         <div className="flex flex-col w-1/2 items-center justify-end mb-4">
-          <h2 className="text-lg font-bold text-black mb-4">Utilizados com frequência</h2>
+          <h2 className="font-bold text-black mb-4">Utilizados com frequência</h2>
           <div className="grid grid-cols-3 gap-4">
             {/* Ícone Contratos */}
             <div className="flex flex-col items-center text-white">
@@ -99,11 +101,11 @@ export function Home() {
               <p className="mt-2">Contratos</p>
             </div>
 
-            {/* Ícone Banco de Horas */}
-            <div className="flex flex-col items-center text-white">
+
+            <div className="flex flex-col items-center text-white" >
               <div
                 className="bg-white p-4 rounded-full cursor-pointer"
-                onClick={() => navigate("/banco-horas")}  // Substitua com a rota correspondente
+                onClick={() => navigate("/banco-horas")} 
                 title="Banco de Horas"
               >
                 <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
