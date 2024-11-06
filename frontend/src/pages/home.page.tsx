@@ -11,7 +11,7 @@ export function Home() {
 
 	const handleLogout = () => {
 		logout(); // Função que desloga o usuário
-		navigate("/login"); // Redireciona para a página de login
+		navigate("/"); // Redireciona para a página de login
 	};
 	const { auth, isLoggedIn } = useAuthContext();
 	const user = isLoggedIn ? auth : null;
