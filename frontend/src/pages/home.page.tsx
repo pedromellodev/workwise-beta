@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "../cli/AuthContext";
 import workwise_logo from "../assets/workwise_logo.svg";
 import contratos_icon from "../assets/contratos_icon.svg";
+import banco_horas_icon from "../assets/banco_horas_icon.svg"
+import avaliacoes_icon from "../assets/avaliacoes_icon.svg"; 
 import axios from "axios";
-import { LogoutIcon } from "@heroicons/react/outline";
 import { useNavigate } from "react-router-dom";
-import Contratos from "./contrato/contratos.page";
 
 export function Home() {
   const { logout } = useAuthContext();
@@ -14,8 +14,8 @@ export function Home() {
   // Função de Logout
   const handleLogout = () => {
     logout(); // Função que desloga o usuário
-    navigate("/"); // Redireciona para a página de login
-	navigate("/contratos");
+    // navigate("/"); // Redireciona para a página de login
+    navigate("/contratos");
   };
 
   const { auth, isLoggedIn } = useAuthContext();
@@ -47,21 +47,11 @@ export function Home() {
     fetchWeather();
   }, []);
 
-  // Função para navegar para outras páginas
-//   const handleIconClick = (Contratos: string) => {
-//     navigate(`/${Contratos}`); // Navega para a página correspondente
-//   };
-
   return (
     <div className="h-screen bg-gradient-to-b from-purple-600 to-blue-400 overflow-hidden flex flex-col items-center">
       {/* Navbar */}
       <div className="w-full p-3 flex justify-between items-center bg-purple-400">
         <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
-        {/* <LogoutIcon
-          onClick={handleLogout}
-          className="h-6 w-6 text-black cursor-pointer"
-          title="Logout"
-        /> */}
       </div>
 
       {/* Temperatura/Data/Dia da semana */}
@@ -85,9 +75,9 @@ export function Home() {
             <h2 className="text-lg font-bold text-purple-600">Quadro de Lembretes</h2>
             <ul className="mt-4 space-y-4">
               <li className="flex justify-between text-gray-700">
-			  	<span>Hoje:</span>
-				<span>Reunião Workwise</span>
-				<span>10:00</span>
+                <span>Hoje:</span>
+                <span>Reunião Workwise</span>
+                <span>10:00</span>
               </li>
             </ul>
           </div>
@@ -97,15 +87,40 @@ export function Home() {
         <div className="flex flex-col w-1/2 items-center justify-end mb-4">
           <h2 className="text-lg font-bold text-black mb-4">Utilizados com frequência</h2>
           <div className="grid grid-cols-3 gap-4">
+            {/* Ícone Contratos */}
             <div className="flex flex-col items-center text-white">
               <div
                 className="bg-white p-4 rounded-full cursor-pointer"
-				onClick={handleLogout}
-				title="Logout"
+                onClick={() => navigate("/contratos")}
+                title="Contratos"
               >
-                <img src={contratos_icon} alt="Banco de Horas" className="w-12 h-12" />
+                <img src={contratos_icon} alt="Contratos" className="w-12 h-12" />
               </div>
               <p className="mt-2">Contratos</p>
+            </div>
+
+            {/* Ícone Banco de Horas */}
+            <div className="flex flex-col items-center text-white">
+              <div
+                className="bg-white p-4 rounded-full cursor-pointer"
+                onClick={() => navigate("/banco-horas")}  // Substitua com a rota correspondente
+                title="Banco de Horas"
+              >
+                <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
+              </div>
+              <p className="mt-2">Banco de Horas</p>
+            </div>
+
+            {/* Novo Ícone (Outro) */}
+            <div className="flex flex-col items-center text-white">
+              <div
+                className="bg-white p-4 rounded-full cursor-pointer"
+                onClick={() => navigate("/contrato/avalicoes")}  // Substitua com a rota correspondente
+                title="Outro"
+              >
+                <img src={avaliacoes_icon} alt="Outro Ícone" className="w-12 h-12" />
+              </div>
+              <p className="mt-2">Avaliações</p>
             </div>
           </div>
         </div>
