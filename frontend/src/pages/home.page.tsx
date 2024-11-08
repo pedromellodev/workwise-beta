@@ -50,19 +50,29 @@ export function Home() {
   }, []);
 
   return (
+
+    // header
     <div className="h-screen bg-gradient-to-b from-purple-600 to-blue-400 overflow-hidden flex flex-col items-center">
       <div className="w-full p-3 flex justify-between items-center bg-purple-400">
-        <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
-          <Bell className="w-[33px] h-[35px]" />
-        </div>
+      <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
+      <Bell className="w-[33px] h-[35px]" />
+    </div>
 
       {/* Temperatura/Data/Dia da semana */}
-      <div className="absolute top-20 right-4 text-white text-right">
-        <p className="text-sm font-medium">
-          {weatherData.temperature} | {weatherData.date}
-        </p>
-        <p className="text-xs text-gray-200">{weatherData.weekday}</p>
-      </div>
+       <div className="absolute top-20 right-4 text-white text-right">
+       <div className="w-[125px] h-[98.44px] flex-col justify-start items-center gap-[3px] inline-flex">
+            <div className="justify-start items-center gap-[7px] inline-flex">
+              <div className="w-[42px] h-[42px] relative" /> 
+              {/* colocar icon de temperatura */}
+              <div className="w-[38px] h-[25px] text-center text-white text-2xl  leading-[28.80px]">{weatherData.temperature}</div>
+            </div>
+            <div className="h-[53.44px] flex-col justify-start items-center flex">
+              <div className="h-[26.72px] text-center text-white text-xl">{weatherData.date}</div>
+              <div className="h-[26.72px] text-center text-white text-base">{weatherData.weekday}</div>
+            </div>
+        </div>
+      </div> 
+
 
       {/* Conteúdo principal */}
       <div className="flex w-5/6 mt-8 gap-8">
@@ -72,7 +82,6 @@ export function Home() {
             Bem-vindo(a) de volta, {user ? user.username : "Usuário"}!
           </h1>
           <p className="text-sm text-gray-200">Já conferiu suas notificações?</p>
-
           <div className="bg-white shadow-lg rounded-lg p-6 mt-4" style={{ height: "350px" }}>
             <h2 className="text-lg font-bold text-purple-600">Quadro de Lembretes</h2>
             <ul className="mt-4 space-y-4">
