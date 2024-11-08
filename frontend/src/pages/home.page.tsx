@@ -73,69 +73,83 @@ export function Home() {
         </div>
       </div> 
 
-
-      {/* Conteúdo principal */}
-      <div className="flex w-5/6 mt-8 gap-8">
-        {/* Quadro de Lembretes */}
-        <div className="w-1/2">
-          <h1 className="text-xl font-semibold text-white">
-            Bem-vindo(a) de volta, {user ? user.username : "Usuário"}!
-          </h1>
-          <p className="text-sm text-gray-200">Já conferiu suas notificações?</p>
-          <div className="bg-white shadow-lg rounded-lg p-6 mt-4" style={{ height: "350px" }}>
-            <h2 className="text-lg font-bold text-purple-600">Quadro de Lembretes</h2>
-            <ul className="mt-4 space-y-4">
-              <li className="flex justify-between text-gray-700">
-                <span>Hoje:</span>
-                <span>Reunião Workwise</span>
-                <span>10:00</span>
-              </li>
-            </ul>
+      <div className="flex w-5/6 mt-8 mx-auto flex-col gap-10">
+        {/* Conteúdo principal */}
+          <div className="flex w-5/6 mt-8 gap-8">
+              <ul>
+              <h1 className="text-3xl font-semibold text-white">
+                Bem-vindo(a) de volta, {user ? user.username : "Usuário"}!
+              </h1>
+              <p className="text-base text-gray-200">Já conferiu suas notificações?</p>
+              </ul>
           </div>
-        </div>
-
-        {/* Utilizados com Frequência */}
-        <div className="flex flex-col w-1/2 items-center justify-end mb-4">
-          <h2 className="font-bold text-black mb-4">Utilizados com frequência</h2>
-          <div className="grid grid-cols-3 gap-4">
-            {/* Ícone Contratos */}
-            <div className="flex flex-col items-center text-white">
-              <div
-                className="bg-white p-4 rounded-full cursor-pointer"
-                onClick={() => navigate("/contratos")}
-                title="Contratos"
-              >
-                <img src={contratos_icon} alt="Contratos" className="w-12 h-12" />
+          <div className="w-[600px] h-[800px] bg-white border border-[#1f1f1f] flex-col justify-start items-center gap-[34px] inline-flex">
+              <div className="self-stretch h-20 px-[107px] py-[21px] bg-purple-500 justify-center items-center gap-2.5 inline-flex">
+                  <div className="text-center text-[#1f1f1f] text-xl font-normal font-['Alata'] leading-[30px]">Quadro de Lembretes</div>
               </div>
-              <p className="mt-2">Contratos</p>
-            </div>
+          </div>
+          </div>
 
-
-            <div className="flex flex-col items-center text-white" >
+          {/* Utilizados com Frequência */}
+      <div className="flex flex-col w-1/2 items-center justify-end mb-4">
+        <h2 className="font-bold text-black mb-4">Utilizados com frequência</h2>
+          <div className="grid grid-cols-3 gap-4">
+          <div className="flex flex-col items-center text-white" >
               <div
                 className="bg-white p-4 rounded-full cursor-pointer"
                 onClick={() => navigate("/banco-horas")} 
-                title="Banco de Horas"
-              >
+                title="Banco de Horas">
                 <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
               </div>
               <p className="mt-2">Banco de Horas</p>
             </div>
+          </div>
+      </div>
 
-            {/* Novo Ícone (Outro) */}
-            <div className="flex flex-col items-center text-white">
+      
+          {/* Utilizados com Frequência */}
+          <div className="flex flex-col w-1/2 items-center justify-end mb-4">
+        <h2 className="font-bold text-black mb-4">Utilizados com frequência</h2>
+          <div className="grid grid-cols-3 gap-4">
+          <div className="flex flex-col items-center text-white" >
               <div
                 className="bg-white p-4 rounded-full cursor-pointer"
-                onClick={() => navigate("/contratos/detalhes")}  // Substitua com a rota correspondente
-                title="Outro"
-              >
-                <img src={avaliacoes_icon} alt="Outro Ícone" className="w-12 h-12" />
+                onClick={() => navigate("/banco-horas")} 
+                title="Banco de Horas">
+                <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
               </div>
-              <p className="mt-2">Avaliações</p>
+              <p className="mt-2">Banco de Horas</p>
             </div>
           </div>
-        </div>
       </div>
-    </div>
+
+      </div>
   );
 }
+
+
+
+        //     {/* Novo Ícone (Outro) */}
+        //     <div className="flex flex-col items-center text-white">
+        //       <div
+        //         className="bg-white p-4 rounded-full cursor-pointer"
+        //         onClick={() => navigate("/contratos/detalhes")}  // Substitua com a rota correspondente
+        //         title="Outro"
+        //       >
+        //         <img src={avaliacoes_icon} alt="Outro Ícone" className="w-12 h-12" />
+        //       </div>
+        //       <p className="mt-2">Avaliações</p>
+        //     </div>
+        //   </div>
+        // </div>
+
+
+          // <div className="bg-white shadow-lg rounded-lg p-6 mt-4" style={{ height: "350px" }}>
+          //   <h2 className="text-lg font-bold text-purple-600">Quadro de Lembretes</h2>
+          //   <ul className="mt-4 space-y-4">
+          //     <li className="flex justify-between text-gray-700">
+          //       <span>Hoje:</span>
+          //       <span>Reunião Workwise</span>
+          //       <span>10:00</span>
+          //     </li>
+          //   </ul>
