@@ -57,21 +57,40 @@ export function Home() {
       <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
       <Bell className="w-[33px] h-[35px]" />
     </div>
-
+    
+    <div className="flex w-full mt-11 mx-auto gap-8 relative">
       {/* Temperatura/Data/Dia da semana */}
-       <div className="absolute top-20 right-4 text-white text-right">
-       <div className="w-[125px] h-[98.44px] flex-col justify-start items-center gap-[3px] inline-flex">
-            <div className="justify-start items-center gap-[7px] inline-flex">
-              <div className="w-[42px] h-[42px] relative" /> 
-              {/* colocar icon de temperatura */}
-              <div className="w-[38px] h-[25px] text-center text-white text-2xl  leading-[28.80px]">{weatherData.temperature}</div>
-            </div>
-            <div className="h-[53.44px] flex-col justify-start items-center flex">
-              <div className="h-[26.72px] text-center text-white text-xl">{weatherData.date}</div>
-              <div className="h-[26.72px] text-center text-white text-base">{weatherData.weekday}</div>
-            </div>
+      <div className="absolute top-0 right-4 text-white text-right">
+        <div className="w-[125px] h-[98.44px] flex-col justify-start items-center gap-[3px] inline-flex">
+          <div className="justify-start items-center gap-[7px] inline-flex">
+            <div className="w-[42px] h-[42px] relative" /> 
+            {/* ícone de temperatura */}
+            <div className="w-[38px] h-[25px] text-center text-white text-2xl leading-[28.80px]">{weatherData.temperature}</div>
+          </div>
+          <div className="h-[53.44px] flex-col justify-start items-center flex">
+            <div className="h-[26.72px] text-center text-white text-xl">{weatherData.date}</div>
+            <div className="h-[26.72px] text-center text-white text-base">{weatherData.weekday}</div>
+          </div>
         </div>
-      </div> 
+      </div>
+
+      {/* Utilizados com frequência abaixo das informações de temperatura */}
+      <div className="absolute top-60 right-80 flex flex-col items-center mt-80">
+        <h2 className="font-bold text-black mb-4">Utilizados com frequência</h2>
+        <div className="grid grid-cols-3 gap-4">
+          <div className="flex flex-col items-center text-white">
+            <div
+              className="bg-white p-4 rounded-full cursor-pointer"
+              onClick={() => navigate("/banco-horas")} 
+              title="Banco de Horas"
+            >
+              <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
+            </div>
+            <p className="mt-2">Banco de Horas</p>
+          </div>
+        </div>
+      </div>
+
 
       <div className="flex w-5/6 mt-8 mx-auto flex-col gap-10">
         {/* Conteúdo principal */}
@@ -85,45 +104,14 @@ export function Home() {
           </div>
           <div className="w-[600px] h-[800px] bg-white border border-[#1f1f1f] flex-col justify-start items-center gap-[34px] inline-flex">
               <div className="self-stretch h-20 px-[107px] py-[21px] bg-purple-500 justify-center items-center gap-2.5 inline-flex">
-                  <div className="text-center text-[#1f1f1f] text-xl font-normal font-['Alata'] leading-[30px]">Quadro de Lembretes</div>
+                  <div className="text-center text-[#1f1f1f] text-xl font-normal leading-[30px]">Quadro de Lembretes</div>
               </div>
           </div>
           </div>
+    </div>
+</div>
 
-          {/* Utilizados com Frequência */}
-      <div className="flex flex-col w-1/2 items-center justify-end mb-4">
-        <h2 className="font-bold text-black mb-4">Utilizados com frequência</h2>
-          <div className="grid grid-cols-3 gap-4">
-          <div className="flex flex-col items-center text-white" >
-              <div
-                className="bg-white p-4 rounded-full cursor-pointer"
-                onClick={() => navigate("/banco-horas")} 
-                title="Banco de Horas">
-                <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
-              </div>
-              <p className="mt-2">Banco de Horas</p>
-            </div>
-          </div>
-      </div>
 
-      
-          {/* Utilizados com Frequência */}
-          <div className="flex flex-col w-1/2 items-center justify-end mb-4">
-        <h2 className="font-bold text-black mb-4">Utilizados com frequência</h2>
-          <div className="grid grid-cols-3 gap-4">
-          <div className="flex flex-col items-center text-white" >
-              <div
-                className="bg-white p-4 rounded-full cursor-pointer"
-                onClick={() => navigate("/banco-horas")} 
-                title="Banco de Horas">
-                <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
-              </div>
-              <p className="mt-2">Banco de Horas</p>
-            </div>
-          </div>
-      </div>
-
-      </div>
   );
 }
 
