@@ -4,7 +4,7 @@ import workwise_logo from "../assets/workwise_logo.svg";
 import contratos_icon from "../assets/contratos_icon.svg";
 import banco_horas_icon from "../assets/banco_horas_icon.svg";
 import avaliacoes_icon from "../assets/avaliacoes_icon.svg";
-import icon_menu from "../assets/icon_menu.svg";
+import icon_menu from "../assets/icon_menu.svg"; 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Bell, ChevronLeft, Edit } from "lucide-react";
@@ -56,11 +56,14 @@ export function Home() {
       </div>
 
       <div className="flex w-full mt-10 mx-auto gap-10 relative">
-  <div className="w-20 h-[827px] pr-[11px] py-[337px] justify-start items-center gap-3 inline-flex">
-    <div className="w-[42px] h-[150px] flex-col justify-center items-center inline-flex">
-      <div className="w-[42px] h-[150px] px-[13px] py-[59px] bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center gap-2.5 inline-flex" />
-    </div>
-  </div>
+
+      <div className="w-20 h-[827px] pr-[11px] py-[337px] justify-start items-center gap-3 inline-flex">
+        <div className="w-[42px] h-[150px] flex-col justify-center items-center inline-flex">
+          <button className="w-[50px] h-[150px] px-[13px] py-[59px] bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center gap-2.5 inline-flex">
+            <img src={icon_menu} alt="Menu" className="w-[100px] h-[100px]" />
+          </button>
+        </div>
+      </div>
 
   <div className="flex flex-col gap-10 ml-10"> {/* Ajustei o valor para ml-40 */}
     {/* Conteúdo principal */}
@@ -72,7 +75,7 @@ export function Home() {
         <p className="text-base text-gray-200">Já conferiu suas notificações?</p>
       </ul>
     </div>
-    <div className="h-[650px] max-h-[650px] w-full max-w-[417px] bg-white border border-[#1f1f1f] rounded-lg overflow-hidden shadow-lg">
+    <div className="h-[650px] max-h-[650px] w-full max-w-[600px] bg-white border border-[#1f1f1f] rounded-lg overflow-hidden shadow-lg">
       <div className="bg-purple-500 p-4">
         <h2 className="text-center text-[#1f1f1f] text-xl font-normal">Quadro de Lembretes</h2>
       </div>
@@ -122,7 +125,7 @@ export function Home() {
             className="bg-white p-4 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
             onClick={() => navigate("/banco-horas")}
             aria-label="Banco de Horas">
-            <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
+            <img src={avaliacoes_icon} alt="Banco de Horas" className="w-12 h-12" />
           </div>
           <div className="text-center text-[#1f1f1f] text-base font-normal leading-tight">
             Banco de Horas
@@ -133,7 +136,7 @@ export function Home() {
             className="bg-white p-4 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
             onClick={() => navigate("/banco-horas")}
             aria-label="Banco de Horas">
-            <img src={banco_horas_icon} alt="Banco de Horas" className="w-12 h-12" />
+            <img src={contratos_icon} alt="Banco de Horas" className="w-12 h-12" />
           </div>
           <div className="text-center text-[#1f1f1f] text-base font-normal leading-tight">
             Banco de Horas
@@ -143,6 +146,6 @@ export function Home() {
     </div>
   </div>
 </div>
-        </div>
+</div>
   );
 }
