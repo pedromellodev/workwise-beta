@@ -7,6 +7,7 @@ import avaliacoes_icon from "../assets/avaliacoes_icon.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Bell, ChevronLeft, Edit } from "lucide-react";
+import { LogoutIcon } from "@heroicons/react/outline";
 
 
 export function Home() {
@@ -15,9 +16,10 @@ export function Home() {
 
   // Função de Logout
   const handleLogout = () => {
-    logout(); // Função que desloga o usuário
-    // navigate("/"); // Redireciona para a página de login
-    navigate("/contratos");
+    setTimeout(() => {
+      logout();
+      navigate("/");
+      }, 800);
   };
 
   const { auth, isLoggedIn } = useAuthContext();
@@ -50,10 +52,12 @@ export function Home() {
   }, []);
 
   return (
-    <div className="h-screen bg-gradient-to-b from-purple-600 to-blue-400 overflow-hidden flex flex-col items-center">
-      <div className="w-full p-3 flex justify-between items-center bg-purple-400">
+    <div className="h-screen bg-gradient-to-b from-blue-400 to-roxo-primario overflow-hidden flex flex-col items-center">
+      <div className="w-full p-1 flex justify-between items-center bg-white">
         <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
-          <Bell className="w-[33px] h-[35px]" />
+        {/*<Bell className="h-6 w-6 text-black cursor-pointer hover:scale-110 duration-300 ease-in-out" />*/}
+        <LogoutIcon onClick={handleLogout} className="h-6 w-6 text-purple-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" title="Logout"
+        />
         </div>
 
       {/* Temperatura/Data/Dia da semana */}

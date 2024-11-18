@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, Plus, Loader2 } from "lucide-react";
+import { Search, Plus, Loader2, ChevronLeft } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import workwise_logo from "../../assets/workwise_logo.svg";
@@ -43,9 +43,11 @@ export default function Contratos() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-600 to-blue-400 flex flex-col">
-      <div className="w-full p-3 flex justify-between items-center bg-purple-400">
+    <div className="min-h-screen bg-gradient-to-b from-blue-400 to-roxo-primario flex flex-col">
+      <div className="w-full p-1 flex justify-between items-center bg-white">
         <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
+        <ChevronLeft onClick={() => navigate("/home")} className="h-6 w-6 text-purple-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" title="Logout"
+        />
       </div>
 
       {/* Main content and button in the same row */}
