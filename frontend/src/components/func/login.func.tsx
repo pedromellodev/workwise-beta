@@ -29,8 +29,10 @@ export function FormsLogin() {
             if (response.data.error) {
                 alert(response.data.error);
             } else {
-                setAuth(response.data.user.username, response.data.user.is_staff);
-                navigate("/home");
+				setTimeout(() => {
+					setAuth(response.data.user.username, response.data.user.is_staff);
+					navigate("/home");
+				  }, 800);
             }
         } catch (error) {
             console.error("Login failed", error);
@@ -53,7 +55,7 @@ export function FormsLogin() {
 				<label htmlFor="email" className="text-sm font-semibold text-gray-700">Email</label>
 				<input
 					id="email"
-					className="rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
+					className="rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-purple-300 transition hover:scale-105 duration-300 ease-in-out"
 					type="text"
 					placeholder="Digite seu email"
 					{...register("email")}
@@ -61,7 +63,7 @@ export function FormsLogin() {
 				<label htmlFor="password" className="text-sm font-semibold text-gray-700">Senha</label>
 				<input
 					id="password"
-					className="rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
+					className="rounded-md py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300 hover:scale-105 duration-300 ease-in-out"
 					type="password"
 					placeholder="Digite sua senha"
 					{...register("password")}
@@ -73,7 +75,7 @@ export function FormsLogin() {
                     </p>
                 )}
 
-			<Button className="mt-3 w-80 bg-purple-500 hover:bg-purple-600 text-white font-semibold text-lg py-2 rounded-lg transition-colors duration-300" type="submit" disabled={isLoading}>
+			<Button className="mt-3 w-80 bg-purple-500 hover:bg-purple-600 text-white font-semibold text-lg py-2 rounded-lg transition-colors duration-300 " type="submit" disabled={isLoading}>
 				Entrar
 			</Button>
 		</form>
