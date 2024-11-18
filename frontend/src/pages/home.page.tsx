@@ -65,7 +65,7 @@ export function Home() {
         </div>
       </div>
 
-  <div className="flex flex-col gap-10 ml-10"> {/* Ajustei o valor para ml-40 */}
+  <div className="flex flex-col gap-10 ml-10"> 
     {/* Conteúdo principal */}
     <div className="flex gap-10">
       <ul>
@@ -93,23 +93,22 @@ export function Home() {
           <div className="w-[42px] h-[42px] relative">
             <div className="w-full h-full bg-yellow-400 rounded-full" aria-hidden="true" />
           </div>
-          <div className="w-[38px] h-[25px] text-center text-white text-2xl leading-[28.80px]">
-            {weatherData.temperature}
-          </div>
         </div>
         <div className="h-[53.44px] flex-col justify-start items-center flex">
-          <div className="h-[26.72px] text-center text-white text-xl">{weatherData.date}</div>
+          <div className=" text-center text-white text-2xl leading-[19.80px]">
+            {weatherData.temperature}
+          </div>
+          <div className="h-[16.72px] text-center text-white text-base">{weatherData.date}</div>
           <div className="h-[26.72px] text-center text-white text-base">{weatherData.weekday}</div>
         </div>
       </div>
     </div>
 
-    {/* Utilizados com frequência abaixo das informações de temperatura */}
-    <div className="absolute top-[450px] right-60 flex flex-col items-start">
-    <h1 className="font-bold text-[25px] text-black mb-10">Utilizados com frequência</h1>
+    <div className="absolute top-[160px] flex-col items-start">
+    <h1 className="font-bold text-[25px] text-white mb-10">Utilizados com frequência</h1>
       <div className="grid grid-cols-3 gap-20">
         {/* Cards */}
-        <div className="w-35 h-35 px-[30px] pt-5 pb-[30px] bg-white rounded border border-[#3f3f3f] flex flex-col justify-center items-center gap-4">
+        <div className="w-15 h-15 px-[30px] pt-5 pb-[30px] bg-white rounded border border-[#3f3f3f] flex flex-col justify-center items-center gap-4">
           <div
             className="bg-white p-4 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
             onClick={() => navigate("/banco-horas")}

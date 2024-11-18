@@ -13,7 +13,7 @@ export function Login() {
 
   return (
     <div className="h-screen flex">
-      <div className="w-1/4 bg-gradient-to-b from-blue-400 to-roxo-primario flex flex-col justify-center text-white p-8">
+      <div className="bg-gradient-to-b from-blue-400 to-roxo-primario flex flex-col justify-center text-white p-8">
         <h2 className="text-2xl font-semibold mb-2">Esqueceu a senha?</h2>
         <p className="mb-4">Recupere-a aqui</p>
         <button className="px-6 py-2 border border-white rounded-lg hover:bg-white hover:text-purple-600 transition">
