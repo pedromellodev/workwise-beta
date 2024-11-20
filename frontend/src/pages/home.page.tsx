@@ -4,9 +4,10 @@ import workwise_logo from "../assets/workwise_logo.svg";
 import contratos_icon from "../assets/contratos_icon.svg";
 import banco_horas_icon from "../assets/banco_horas_icon.svg"
 import avaliacoes_icon from "../assets/avaliacoes_icon.svg"; 
+import icon_menu from "../assets/icon_menu.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Bell, ChevronLeft, Edit } from "lucide-react";
+// import { Bell, ChevronLeft, Edit } from "lucide-react";
 import { LogoutIcon } from "@heroicons/react/outline";
 
 
@@ -53,12 +54,81 @@ export function Home() {
 
   return (
     <div className="h-screen bg-gradient-to-b from-blue-400 to-roxo-primario overflow-hidden flex flex-col items-center">
-      <div className="w-full p-1 flex justify-between items-center bg-white">
-        <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
-        {/*<Bell className="h-6 w-6 text-black cursor-pointer hover:scale-110 duration-300 ease-in-out" />*/}
-        <LogoutIcon onClick={handleLogout} className="h-6 w-6 text-purple-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" title="Logout"
+<div className="w-full p-1 flex justify-between items-center bg-white">
+  {/* Logo WorkWise que abre o menu */}
+  <div className="relative">
+    {/* Checkbox para o menu */}
+    <input type="checkbox" id="menu" className="hidden peer" />
+
+    {/* Logo como botão do menu */}
+    <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
+
+    {/* Lista do menu */}
+    <ul className="absolute top-0 right-0 left-[-380px] w-[370px] bg-white shadow-lg rounded-lg p-4 min-h-screen transition-transform duration-300 ease-in-out peer-checked:translate-x-[370px]">
+      <div className="flex flex-col min-h-screen bg-white">
+        {/* Header */}
+        <header className="p-6 flex flex-col items-center space-y-1">
+          <div className="flex items-center space-x-2">
+            <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
+            <h1 className="text-xl font-semibold">WorkWise</h1>
+          </div>
+          <p className="text-sm text-muted-foreground">O futuro do RH</p>
+        </header>
+
+        {/* Navigation Menu */}
+        <nav className="flex-1 flex flex-col px-4 space-y-60">
+          {/* Navigation Links */}
+          <div>
+            {[
+              "Tela Inicial",
+              "Contratos",
+              "Avaliações",
+              "Férias",
+              "Banco de Horas",
+            ].map((item) => (
+              <button
+                key={item}
+                className="w-[313px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <div>
+            {[
+              "Configurações",
+              "SAC",
+            ].map((item) => (
+              <button
+                key={item}
+                className="w-[313px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </nav>
+      </div>
+
+    </ul>
+      {/* Botão para abrir/fechar o menu */}
+      <label htmlFor="menu" className="cursor-pointer absolute left-0 top-[390px] flex-col justify-center items-center inline-flex transition-all duration-300 ease-in-out peer-checked:translate-x-[370px]">
+    <div className="w-[42px] h-[150px] px-[13px] py-[59px] bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center gap-2.5 inline-flex">
+      <img src={icon_menu} alt="Abrir/Fechar menu" className="h-150" />
+    </div>
+  </label>
+  
+</div>
+
+        {/* Ícone de Logout */}
+        <LogoutIcon 
+          onClick={handleLogout} 
+          className="h-6 w-6 text-black-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" 
+          title="Logout"
         />
-        </div>
+        
+</div>
+
 
       {/* Temperatura/Data/Dia da semana */}
       <div className="absolute top-20 right-4 text-white text-right">
@@ -131,6 +201,11 @@ export function Home() {
           </div>
         </div>
       </div>
+
+
+
+
+
     </div>
   );
 }
