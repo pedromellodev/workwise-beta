@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../cli/AuthContext";
+import { Link } from 'react-router-dom';
 import workwise_logo from "../assets/workwise_logo.svg";
 import contratos_icon from "../assets/contratos_icon.svg";
 import banco_horas_icon from "../assets/banco_horas_icon.svg"
@@ -9,6 +10,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import { Bell, ChevronLeft, Edit } from "lucide-react";
 import { LogoutIcon } from "@heroicons/react/outline";
+import { Button } from "../components/ui/button";
+import { Card} from "../components/ui/card";
+import { ChevronDown } from 'lucide-react';
 
 
 export function Home() {
@@ -54,7 +58,8 @@ export function Home() {
 
   return (
     <div className="h-screen bg-gradient-to-b from-blue-400 to-roxo-primario overflow-hidden flex flex-col items-center">
-<div className="w-full p-1 flex justify-between items-center bg-white">
+
+<div className="w-full p-1 flex justify-between items-center bg-purple-300">
   {/* Logo WorkWise que abre o menu */}
   <div className="relative">
     {/* Checkbox para o menu */}
@@ -75,48 +80,55 @@ export function Home() {
           <p className="text-sm text-muted-foreground">O futuro do RH</p>
         </header>
 
-        {/* Navigation Menu */}
-        <nav className="flex-1 flex flex-col px-4 space-y-60">
-          {/* Navigation Links */}
-          <div>
-            {[
-              "Tela Inicial",
-              "Contratos",
-              "Avaliações",
-              "Férias",
-              "Banco de Horas",
-            ].map((item) => (
-              <button
-                key={item}
-                className="w-[313px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-          <div>
-            {[
-              "Configurações",
-              "SAC",
-            ].map((item) => (
-              <button
-                key={item}
-                className="w-[313px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </nav>
-      </div>
+{/* Navigation Menu */}
+<nav className="flex-1 flex flex-col pl-0 px-4 space-y-60">
+  {/* Navigation Links */}
+  <div>
+    {[
+      { name: "Tela Inicial", route: "/home" },
+      { name: "Contratos", route: "/contratos" },
+      { name: "Avaliações", route: "/avaliacoes" },
+      { name: "Férias", route: "/ferias" },
+      { name: "Banco de Horas", route: "/banco-de-horas" },
+    ].map(({ name, route }) => (
+      <Link
+        key={name}
+        to={route}
+        className="w-[355px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
+      >
+        {name}
+      </Link>
+    ))}
+  </div>
+  <div>
+    {[
+      { name: "Configurações", route: "/configuracoes" },
+      { name: "SAC", route: "/sac" },
+    ].map(({ name, route }) => (
+      <Link
+        key={name}
+        to={route}
+        className="w-[355px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
+      >
+        {name}
+      </Link>
+    ))}
+  </div>
 
+  
+</nav>
+
+      </div>
+    
     </ul>
       {/* Botão para abrir/fechar o menu */}
-      <label htmlFor="menu" className="cursor-pointer absolute left-0 top-[390px] flex-col justify-center items-center inline-flex transition-all duration-300 ease-in-out peer-checked:translate-x-[370px]">
-    <div className="w-[42px] h-[150px] px-[13px] py-[59px] bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center gap-2.5 inline-flex">
+      <label htmlFor="menu" className="cursor-pointer absolute left-[0px] top-[390px] flex-col justify-center items-center inline-flex transition-all duration-300 ease-in-out peer-checked:translate-x-[370px]">
+    <div className="w-[42px] h-[150px] px-[13px] py-[59px] pl-0 bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center gap-2.5 inline-flex">
       <img src={icon_menu} alt="Abrir/Fechar menu" className="h-150" />
     </div>
   </label>
+  
+  
   
 </div>
 
@@ -139,24 +151,71 @@ export function Home() {
       </div>
 
       {/* Conteúdo principal */}
-      <div className="flex w-5/6 mt-8 gap-8">
-        {/* Quadro de Lembretes */}
-        <div className="w-1/2">
+      <div className="flex w-5/6 mt-8 gap-40">
+
+        <div className="w-5/6">
           <h1 className="text-xl font-semibold text-white">
             Bem-vindo(a) de volta, {user ? user.username : "Usuário"}!
           </h1>
           <p className="text-sm text-gray-200">Já conferiu suas notificações?</p>
 
-          <div className="bg-white shadow-lg rounded-lg p-6 mt-4" style={{ height: "350px" }}>
-            <h2 className="text-lg font-bold text-purple-600">Quadro de Lembretes</h2>
-            <ul className="mt-4 space-y-4">
-              <li className="flex justify-between text-gray-700">
-                <span>Hoje:</span>
-                <span>Reunião Workwise</span>
+                  {/* Quadro de Lembretes */}
+              <Card className="w-full max-w-2xl">
+      <div className="bg-purple-500 py-5">
+        <h2 className="text-2xl font-medium text-center text-black">Quadro de Lembretes</h2>
+      </div>
+      <div className="p-8 space-y-12">
+        {/* Hoje */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-medium border-b pb-2">Hoje</h3>
+          <div className="space-y-4">
+            {[1, 2, 3].map((_, i) => (
+              <div key={i} className="flex items-center justify-between border-b pb-2">
+                <div className="flex items-center gap-3">
+                  <span className="text-gray-500">{'>>'}</span>
+                  <span>Reunião WorkWise</span>
+                </div>
                 <span>10:00</span>
-              </li>
-            </ul>
+              </div>
+            ))}
           </div>
+          <Button variant="ghost" className="w-full text-gray-400 hover:text-gray-600">
+            <span>Vizualizar mais</span>
+            <ChevronDown className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+
+        {/* Próximos três dias */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-medium border-b pb-2">Próximos três dias</h3>
+          <div className="space-y-4">
+            {[1, 2].map((_, i) => (
+              <div key={i} className="flex items-center justify-between border-b pb-2">
+                <div className="flex items-center gap-3">
+                  <span className="text-gray-500">{'>>'}</span>
+                  <span>Reunião WorkWise</span>
+                </div>
+                <span>10:00</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Próximos sete dias */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-medium border-b pb-2">Próximos sete dias</h3>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between border-b pb-2">
+              <div className="flex items-center gap-3">
+                <span className="text-gray-500">{'>>'}</span>
+                <span>Reunião WorkWise</span>
+              </div>
+              <span>10:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
         </div>
 
         {/* Utilizados com Frequência */}
