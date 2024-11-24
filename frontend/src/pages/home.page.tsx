@@ -136,7 +136,6 @@ export function Home() {
         <LogoutIcon 
           onClick={handleLogout} 
           className="h-6 w-6 text-black-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" 
-          title="Logout"
         />
         
 </div>
@@ -181,7 +180,7 @@ export function Home() {
               </div>
             ))}
           </div>
-          <Button variant="ghost" className="w-full text-gray-400 hover:text-gray-600">
+          <Button className="w-full text-gray-400 hover:text-gray-600">
             <span>Vizualizar mais</span>
             <ChevronDown className="ml-2 h-4 w-4" />
           </Button>
