@@ -58,75 +58,60 @@ export function Home() {
 
   return (
     <div className="h-screen bg-gradient-to-br from-purple-500 via-purple-400 to-blue-500 overflow-hidden flex flex-col items-center">
+      <div className="w-full flex justify-between items-center bg-purple-300">
+        {/* Logo WorkWise que abre o menu */}
+        <div className="relative">
+          {/* Checkbox para o menu */}
+          <input type="checkbox" id="menu" className="hidden peer" />
 
-<div className="w-full p-1 flex justify-between items-center bg-purple-300">
-  {/* Logo WorkWise que abre o menu */}
-  <div className="relative">
-    {/* Checkbox para o menu */}
-    <input type="checkbox" id="menu" className="hidden peer" />
+          {/* Logo como botão do menu */}
+          <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
 
-    {/* Logo como botão do menu */}
-    <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
+          {/* Lista do menu */}
+          <ul className="absolute top-0 right-0 left-[-380px] w-[370px] bg-white shadow-lg rounded-lg p-4 min-h-screen transition-transform duration-300 ease-in-out peer-checked:translate-x-[370px]">
+            <div className="flex flex-col min-h-screen bg-white">
+              {/* Header */}
+              <header className="p-6 flex flex-col items-center space-y-1">
+                <div className="flex items-center space-x-2">
+                  <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
+                  <h1 className="text-xl font-semibold">WorkWise</h1>
+                </div>
+                <p className="text-sm text-muted-foreground">O futuro do RH</p>
+              </header>
 
-    {/* Lista do menu */}
-    <ul className="absolute top-0 right-0 left-[-380px] w-[370px] bg-white shadow-lg rounded-lg p-4 min-h-screen transition-transform duration-300 ease-in-out peer-checked:translate-x-[370px]">
-      <div className="flex flex-col min-h-screen bg-white">
-        {/* Header */}
-        <header className="p-6 flex flex-col items-center space-y-1">
-          <div className="flex items-center space-x-2">
-            <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
-            <h1 className="text-xl font-semibold">WorkWise</h1>
-          </div>
-          <p className="text-sm text-muted-foreground">O futuro do RH</p>
-        </header>
-
-{/* Navigation Menu */}
-<nav className="flex-1 flex flex-col pl-0 px-4 space-y-60">
-  {/* Navigation Links */}
-  <div>
-    {[
-      { name: "Tela Inicial", route: "/home" },
-      { name: "Contratos", route: "/contratos" },
-      { name: "Avaliações", route: "/avaliacoes" },
-      { name: "Férias", route: "/ferias" },
-      { name: "Banco de Horas", route: "/banco-de-horas" },
-    ].map(({ name, route }) => (
-      <Link
-        key={name}
-        to={route}
-        className="w-[355px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
-      >
-        {name}
-      </Link>
-    ))}
-  </div>
-  <div>
-    {[
-      { name: "Configurações", route: "/configuracoes" },
-      { name: "SAC", route: "/sac" },
-    ].map(({ name, route }) => (
-      <Link
-        key={name}
-        to={route}
-        className="w-[355px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
-      >
-        {name}
-      </Link>
-    ))}
-  </div>
-
-  
-</nav>
-
+              {/* Navigation Menu */}
+              <nav className="flex-1 flex flex-col pl-0 space-y-50">
+                {/* Navigation Links */}
+                <div>
+                  {[
+                    { name: "Tela Inicial", route: "/home"},
+                    { name: "Contratos", route: "/contratos" },
+                    { name: "Avaliações", route: "/avaliacoes" },
+                    { name: "Férias", route: "/ferias" },
+                    { name: "Banco de Horas", route: "/banco-de-horas" },
+                    { name: "Configurações", route: "/configuracoes" },
+                    { name: "SAC", route: "/sac" }
+                  ].map(({ name, route }) => (
+                    <Link
+                      key={name}
+                      to={route}
+                      className="w-[355px] h-[50px] pl-[50px] pr-[140px] py-[22px] bg-white justify-start items-center gap-2.5 inline-flex  hover:text-purple-600 transition"
+                    >
+                      {name}
+                    </Link>
+                  ))}
+                </div>
+              </nav>
+                  
       </div>
     
-    </ul>
-      {/* Botão para abrir/fechar o menu */}
-      <label htmlFor="menu" className="cursor-pointer absolute left-[0px] top-[390px] flex-col justify-center items-center inline-flex transition-all duration-300 ease-in-out peer-checked:translate-x-[370px]">
-    <div className="w-[42px] h-[150px] px-[13px] py-[59px] pl-0 bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center gap-2.5 inline-flex">
+  </ul>
+{/* Botão para abrir/fechar o menu */}
+<label htmlFor="menu" className="cursor-pointer absolute left-[0px] top-[390px] flex-col justify-center items-center inline-flex transition-all duration-300 ease-in-out peer-checked:translate-x-[370px]">
+    <div className="w-[42px] h-[150px] px-[13px] py-[59px] pl-0 bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center inline-flex">
       <img src={icon_menu} alt="Abrir/Fechar menu" className="h-150" />
     </div>
-  </label>
+</label>
   
   
   
@@ -135,8 +120,8 @@ export function Home() {
         {/* Ícone de Logout */}
         <LogoutIcon 
           onClick={handleLogout} 
-          className="h-6 w-6 text-black-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" 
-        />
+          className="h-6 w-6 text-white-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" 
+          title="Logout"></LogoutIcon>
         
 </div>
 
@@ -149,7 +134,6 @@ export function Home() {
         <p className="text-xs text-gray-200">{weatherData.weekday}</p>
       </div>
 
-      {/* Conteúdo principal */}
       <div className="flex w-5/6 mt-10 gap-40">
 
       <div className="w-5/6 space-y-2">
@@ -161,18 +145,18 @@ export function Home() {
 
 
                   {/* Quadro de Lembretes */}
-              <Card className="w-full max-w-2xl">
-      <div className="bg-purple-500 py-5">
-        <h2 className="text-2xl font-medium text-center text-black">Quadro de Lembretes</h2>
+    <Card className="max-w-md">
+      <div className="bg-purple-500 py-4">
+        <h2 className="text-2xl font-medium text-center text-white">Quadro de Lembretes</h2>
       </div>
-      <div className="p-8 space-y-12">
+      <div className="p-4 space-y-8">
         {/* Hoje */}
         <div className="space-y-4">
-          <h3 className="text-2xl font-medium border-b pb-2">Hoje</h3>
+          <h3 className="text-lg font-medium border-b pb-2">Hoje</h3>
           <div className="space-y-4">
             {[1, 2, 3].map((_, i) => (
               <div key={i} className="flex items-center justify-between border-b pb-2">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <span className="text-gray-500">{'>>'}</span>
                   <span>Reunião WorkWise</span>
                 </div>
@@ -185,43 +169,13 @@ export function Home() {
             <ChevronDown className="ml-2 h-4 w-4" />
           </Button>
         </div>
-
-        {/* Próximos três dias */}
-        <div className="space-y-4">
-          <h3 className="text-2xl font-medium border-b pb-2">Próximos três dias</h3>
-          <div className="space-y-4">
-            {[1, 2].map((_, i) => (
-              <div key={i} className="flex items-center justify-between border-b pb-2">
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-500">{'>>'}</span>
-                  <span>Reunião WorkWise</span>
-                </div>
-                <span>10:00</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Próximos sete dias */}
-        <div className="space-y-4">
-          <h3 className="text-2xl font-medium border-b pb-2">Próximos sete dias</h3>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between border-b pb-2">
-              <div className="flex items-center gap-3">
-                <span className="text-gray-500">{'>>'}</span>
-                <span>Reunião WorkWise</span>
-              </div>
-              <span>10:00</span>
-            </div>
-          </div>
-        </div>
       </div>
     </Card>
         </div>
 
-       {/* Utilizados com Frequência */}
+{/* Utilizados com Frequência */}
 <div className="flex flex-col w-1/2 items-center justify-end mb-4">
-  <h2 className="font-bold text-3xl text-black mb-4">Utilizados com frequência</h2>
+  <h2 className="font-bold text-xl text-white mb-4">Utilizados com frequência</h2>
   <div className="grid grid-cols-3 gap-8">
     {/* Ícone Contratos */}
     <div className="flex flex-col items-center text-white hover:scale-110 duration-300 ease-in-out">
@@ -247,11 +201,10 @@ export function Home() {
       <p className="mt-4 text-lg font-semibold">Banco de Horas</p>
     </div>
 
-    {/* Novo Ícone (Outro) */}
     <div className="flex flex-col items-center text-white hover:scale-110 duration-300 ease-in-out">
       <div
         className="bg-white p-4 rounded-full cursor-pointer"
-        onClick={() => navigate("/contratos/detalhes")}
+        onClick={() => navigate("/avaliacoes")}
         title="Outro"
       >
         <img src={avaliacoes_icon} alt="Outro Ícone" className="w-12 h-12" />
