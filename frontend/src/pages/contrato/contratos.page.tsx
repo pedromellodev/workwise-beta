@@ -26,10 +26,10 @@ export default function Contratos() {
 
   useEffect(() => {
     const exampleEmployees: Employee[] = [
-      { id: 1, name: "João Silva", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 2, name: "Maria Oliveira", cpf: "xxx.xxx.xxx-xx", status: "ativo" },
-      { id: 3, name: "Carlos Souza", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
-      { id: 4, name: "Ana Santos", cpf: "xxx.xxx.xxx-xx", status: "desligado" },
+      { id: 1, name: "João Silva", cpf: "xxx.xxx.xxx-xx", status: "Ativo" },
+      { id: 2, name: "Maria Oliveira", cpf: "xxx.xxx.xxx-xx", status: "Ativo" },
+      { id: 3, name: "Pedro Henrique Mello", cpf: "xxx.xxx.xxx-xx", status: "Desligado" },
+      { id: 4, name: "Ana Santos", cpf: "xxx.xxx.xxx-xx", status: "Desligado" },
     ];
 
     setTimeout(() => {
@@ -43,57 +43,56 @@ export default function Contratos() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-purple-400 to-blue-500 flex flex-col">
+    <div className="h-screen bg-gradient-to-br from-purple-500 via-purple-400 to-blue-500 flex flex-col overflow-hidden">
       {/* Top bar */}
-      <div className="w-full p-1 flex justify-between items-center bg-purple-300">
+      <div className="w-full flex justify-between items-center bg-purple-300 z-50">
+        {/* Logo WorkWise que abre o menu */}
         <div className="relative">
+          {/* Checkbox para o menu */}
           <input type="checkbox" id="menu" className="hidden peer" />
-          <img src={workwise_logo} alt="WorkWise Logo" className="h-12 cursor-pointer" />
 
-          {/* Lateral Menu */}
-          <ul className="absolute top-0 right-0 left-[-380px] w-[370px] bg-white shadow-lg rounded-lg p-4 min-h-screen transition-transform duration-300 ease-in-out peer-checked:translate-x-[370px] z-50">
-            <header className="p-6 flex flex-col items-center space-y-1">
-              <div className="flex items-center space-x-2">
-                <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
-                <h1 className="text-xl font-semibold">WorkWise</h1>
-              </div>
-              <p className="text-sm text-muted-foreground">O futuro do RH</p>
-            </header>
+          {/* Logo como botão do menu */}
+          <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
 
-            <nav className="flex-1 flex flex-col pl-0 px-4 space-y-60">
-              <div>
-                {[
-                  { name: "Tela Inicial", route: "/home" },
-                  { name: "Contratos", route: "/contratos" },
-                  { name: "Avaliações", route: "/avaliacoes" },
-                  { name: "Férias", route: "/ferias" },
-                  { name: "Banco de Horas", route: "/banco-de-horas" },
-                ].map(({ name, route }) => (
-                  <Link
-                    key={name}
-                    to={route}
-                    className="w-[355px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
-                  >
-                    {name}
-                  </Link>
-                ))}
-              </div>
-              <div>
-                {[
-                  { name: "Configurações", route: "/configuracoes" },
-                  { name: "SAC", route: "/sac" },
-                ].map(({ name, route }) => (
-                  <Link
-                    key={name}
-                    to={route}
-                    className="w-[355px] h-[73px] pl-[50px] pr-[140px] py-[22px] bg-white border border-[#3f3f3f] justify-start items-center gap-2.5 inline-flex"
-                  >
-                    {name}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-          </ul>
+          {/* Lista do menu */}
+          <ul className="absolute top-0 right-0 left-[-380px] w-[370px] bg-white shadow-lg rounded-lg p-4 min-h-screen transition-transform duration-300 ease-in-out peer-checked:translate-x-[370px]">
+            <div className="flex flex-col min-h-screen bg-white">
+              {/* Header */}
+              <header className="p-6 flex flex-col items-center space-y-1">
+                <div className="flex items-center space-x-2">
+                  <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
+                  <h1 className="text-xl font-semibold">WorkWise</h1>
+                </div>
+                <p className="text-sm text-muted-foreground">O futuro do RH</p>
+              </header>
+
+              {/* Navigation Menu */}
+              <nav className="flex-1 flex flex-col pl-0 space-y-50">
+                {/* Navigation Links */}
+                <div>
+                  {[
+                    { name: "Tela Inicial", route: "/home"},
+                    { name: "Contratos", route: "/contratos" },
+                    { name: "Avaliações", route: "/avaliacoes" },
+                    { name: "Férias", route: "/ferias" },
+                    { name: "Banco de Horas", route: "/banco-de-horas" },
+                    { name: "Configurações", route: "/configuracoes" },
+                    { name: "SAC", route: "/sac" }
+                  ].map(({ name, route }) => (
+                    <Link
+                      key={name}
+                      to={route}
+                      className="w-[355px] h-[50px] pl-[50px] pr-[140px] py-[22px] bg-white justify-start items-center gap-2.5 inline-flex  hover:text-purple-600 transition"
+                    >
+                      {name}
+                    </Link>
+                  ))}
+                </div>
+              </nav>
+                  
+      </div>
+    
+  </ul>
 
           <label
             htmlFor="menu"
@@ -139,7 +138,7 @@ export default function Contratos() {
               {filteredEmployees.map((employee) => (
                 <li
                   key={employee.id}
-                  className="bg-gray-100 p-4 rounded-md cursor-pointer"
+                  className="bg-gray-100 p-4 rounded-md cursor-pointer  hover:bg-white hover:text-purple-600 transition shadow md"
                   onClick={() => navigate("/contratos/detalhes")}
                 >
                   <div className="grid grid-cols-3 gap-4">
