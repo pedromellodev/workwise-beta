@@ -105,7 +105,7 @@ export default function Contratos() {
 
           <label
             htmlFor="menu"
-            className="cursor-pointer absolute left-[0px] top-[390px] flex-col justify-center items-center inline-flex transition-all duration-300 ease-in-out peer-checked:translate-x-[370px]"
+            className="cursor-pointer absolute left-[0px] top-[390px] flex-col justify-center items-center inline-flex transition-all duration-300 ease-in-out peer-checked:translate-x-[360px]"
           >
             <div className="w-[42px] h-[150px] px-[13px] py-[59px] pl-0 bg-white rounded-tr-[30px] rounded-br-[30px] justify-start items-center gap-2.5 inline-flex">
               <img src={icon_menu} alt="Abrir/Fechar menu" className="h-150" />
