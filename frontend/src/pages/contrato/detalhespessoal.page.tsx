@@ -27,7 +27,7 @@ export default function Detalhes() {
   return (
     <div className="h-screen bg-gradient-to-br from-purple-500 via-purple-400 to-blue-500 flex flex-col  overflow-hidden">
       {/* Header */}
-      <div className="w-full p-3 flex justify-between items-center bg-purple-400">
+      <div className="w-full flex justify-between items-center bg-purple-300">
         <img src={workwise_logo} alt="WorkWise Logo" className="h-12" />
       </div>
         
