@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "../pages/login.page";
 import { Home } from "../pages/home.page";
 import Contratos from "../pages/contrato/contratos.page";
-import { Detalhes } from "../pages/contrato/detalhespessoal.page";
+import  Detalhes  from "../pages/contrato/detalhespessoal.page";
 import Avaliacoes from "../pages/contrato/avaliacoes";
 
 export function AdminRouter() {
