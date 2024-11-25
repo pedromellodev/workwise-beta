@@ -5,6 +5,7 @@ import { Input } from "../../components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import workwise_logo from "../../assets/workwise_logo.svg";
 import icon_menu from "../../assets/icon_menu.svg";
+import { AddEmployeeModal } from "./AddEmployeeModal";
 
 interface Employee {
   id: number;
@@ -23,6 +24,14 @@ export default function Contratos() {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [isFetching, setIsFetching] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [showModal, setShowModal] = useState(false); // Controle do modal
+
+  // Função para adicionar novos funcionários
+  const handleAddEmployee = (newEmployee: Employee) => {
+    setEmployees((prev) => [...prev, { ...newEmployee, id: prev.length + 1 }]);
+  };
+
 
   useEffect(() => {
     const exampleEmployees: Employee[] = [
@@ -154,12 +163,20 @@ export default function Contratos() {
 
         {/* Button Section */}
         <div className="flex justify-end items-start">
-          <Button variant="primary" className="bg-purple-600 text-white hover:bg-white hover:text-purple-600 transition shadow md">
+          <Button variant="primary" className="bg-purple-600 text-white hover:bg-white hover:text-purple-600 transition shadow md" onClick={() => setShowModal(true)}>
             <Plus className="mr-2 h-4 w-4" />
             Novo Funcionário
           </Button>
         </div>
       </div>
+
+      {showModal && (
+  <AddEmployeeModal
+    onClose={() => setShowModal(false)} // Fechar o modal
+    onSubmit={handleAddEmployee} // Adicionar funcionário
+  />
+)}
+
     </div>
   );
 }
