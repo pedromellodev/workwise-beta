@@ -101,3 +101,38 @@ def delete(request):
             return { 'success': 'Usuário deletado com sucesso.' }
         except:
             return { 'error': 'Algo deu errado ao tentar deletar usuário.' }
+
+
+# Ph: Função de listar funcionário
+@router.get("/funcionarios")
+def get_funcionarios(request):
+    funcionarios = Funcionario.objects.all()
+    return [{'id': f.id, 'name': f.name, 'cpf': f.cpf, 'status': f.status} for f in funcionarios]
+
+# Ph: função de adicionar funcionário
+@router.post("/funcionarios")
+def add_funcionario(request, data: FuncionarioSchema):
+    funcionario = Funcionario.objects.create(
+        name=data.name,
+        cpf=data.cpf,
+        status=data.status
+    )
+    return {"id": funcionario.id, "name": funcionario.name, "cpf": funcionario.cpf, "status": funcionario.status}
+
+# Função de atualizar funcionário
+@router.put("/funcionarios/{id}")
+def update_funcionario(request, id: int, data: FuncionarioSchema):
+    funcionario = Funcionario.objects.get(id=id)
+    for attr, value in data.dict().items():
+        setattr(funcionario, attr, value)
+    funcionario.save()
+    return {"id": funcionario.id, "name": funcionario.name, "cpf": funcionario.cpf, "status": funcionario.status}
+
+# Função de deletar funcionário
+@router.delete("/funcionarios/{id}")
+def delete_funcionario(request, id: int):
+    try:
+        Funcionario.objects.filter(id=id).delete()
+        return {'success': 'Funcionário deletado com sucesso.'}
+    except:
+        return {'error': 'Erro ao tentar deletar funcionário.'}
