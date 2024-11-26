@@ -14,3 +14,8 @@ class RegisterSchema(Schema):
 class LoginSchema(Schema):
     email: str
     password: int
+
+class FuncionarioSchema(Schema):
+    name: str
+    cpf: str
+    status: str

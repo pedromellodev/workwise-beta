@@ -1,7 +1,7 @@
 from ninja import Router
 from django.contrib.auth.models import User
 from api.api import Funcionario
-from .schemas import RegisterSchema, LoginSchema
+from .schemas import RegisterSchema, LoginSchema, FuncionarioSchema
 from django.contrib.auth import aauthenticate, alogin, logout
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
