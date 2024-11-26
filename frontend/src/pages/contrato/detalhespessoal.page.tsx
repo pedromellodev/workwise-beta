@@ -21,6 +21,32 @@ const personalInfo = [
   { label: "Telefone", value: "xx xxxxx-xx" },
   { label: "Celular", value: "xx xxxxx-xx" },
 ];
+const LocalInfo = [
+  { label: "CEP", value: "Erasmo Cabral" },
+  { label: "Rua", value: "xxx.xxx.xxx-xx" },
+  { label: "Número", value: "xx.xxx.xxx-xx" },
+  { label: "Bairro", value: "17 anos" },
+  { label: "Distrito", value: "17/02/2006" },
+  { label: "Complemento", value: "xx xxxxx-xx" },
+];
+
+const EscolaInfo = [
+  { label: "Escola", value: "Erasmo Cabral" },
+  { label: "CNPJ", value: "xxx.xxx.xxx-xx" },
+  { label: "CEP", value: "xx.xxx.xxx-xx" },
+  { label: "Endereço", value: "17 anos" },
+  { label: "Telefone", value: "17/02/2006" },
+  { label: "Cursando", value: "xx xxxxx-xx" },
+  { label: "Ano/Semestre", value: "xx xxxxx-xx" },
+  { label: "Termino", value: "xx xxxxx-xx" },
+];
+
+const ContaInfo = [
+  { label: "Banco", value: "Erasmo Cabral" },
+  { label: "Agência", value: "xxx.xxx.xxx-xx" },
+  { label: "Conta", value: "xx.xxx.xxx-xx" },
+  { label: "Tipo", value: "17 anos" },
+];
 
 const contractInfo = [
   { label: "Contratação", value: "Estagio não obrigatório" },
@@ -43,27 +69,60 @@ export default function Detalhes() {
       case "personal":
         return (
           <div>
-            <h2 className="bg-purple-400 text-white text-center py-2 rounded-md mb-6">Dados Pessoais</h2>
-            <div className="grid grid-cols-[200px,1fr] gap-4">
-              {personalInfo.map((item) => (
-                <React.Fragment key={item.label}>
-                  <div className="border rounded-md p-2 text-center">{item.label}</div>
-                  <div>{item.value}</div>
-                </React.Fragment>
-              ))}
-            </div>
+          <h2 className="bg-purple-400 text-white text-center py-2 rounded-md mb-6">Dados Pessoais</h2>
+          <div className="grid grid-cols-[200px,1fr] gap-4">
+            {personalInfo.map((item) => (
+              <React.Fragment key={item.label}>
+                <div className="border rounded-md p-2 text-center">{item.label}</div>
+                <div>{item.value}</div>
+              </React.Fragment>
+            ))}
           </div>
+    
+          {/* Dados Residenciais */}
+          <h2 className="bg-purple-400 text-white text-center py-2 rounded-md mb-6">Dados Residencial</h2>
+          <div className="grid grid-cols-[200px,1fr] gap-4">
+            {LocalInfo.map((item) => (
+              <React.Fragment key={item.label}>
+                <div className="border rounded-md p-2 text-center">{item.label}</div>
+                <div>{item.value}</div>
+              </React.Fragment>
+            ))}
+          </div>
+
+          {/* Dados Escolar */}
+          <h2 className="bg-purple-400 text-white text-center py-2 rounded-md mb-6">Dados Escolares</h2>
+          <div className="grid grid-cols-[200px,1fr] gap-4">
+            {EscolaInfo.map((item) => (
+              <React.Fragment key={item.label}>
+                <div className="border rounded-md p-2 text-center">{item.label}</div>
+                <div>{item.value}</div>
+              </React.Fragment>
+            ))}
+          </div>
+
+          {/* Dados Bancarios */}
+          <h2 className="bg-purple-400 text-white text-center py-2 rounded-md mb-6">Dados Bancario</h2>
+          <div className="grid grid-cols-[200px,1fr] gap-4">
+            {ContaInfo.map((item) => (
+              <React.Fragment key={item.label}>
+                <div className="border rounded-md p-2 text-center">{item.label}</div>
+                <div>{item.value}</div>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
         );
       case "contract":
         return (
           <div>
             <h2 className="bg-purple-400 text-white text-center py-2 rounded-md mb-6">Dados Contratuais</h2>
             <div className="mb-8 flex justify-between">
-              <div className="space-y-2">
+              <div className="space-y-10">
                 <div className="border rounded-md p-2 text-center">Data Entrada</div>
                 <div className="border-b border-gray-300 w-48"></div>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-10">
                 <div className="border rounded-md p-2 text-center">Data Saída</div>
                 <div className="border-b border-gray-300 w-48"></div>
               </div>
@@ -78,6 +137,30 @@ export default function Detalhes() {
             </div>
           </div>
         );
+        case "timebank":
+          return (
+            <div className="space-y-4 mb-8">
+            <div className="bg-purple-400 text-center py-2 rounded-md">
+              <h2 className="text-white">Registro do Ponto</h2>
+            </div>
+          </div>
+          );
+        case "evaluations":
+          return (
+            <div className="space-y-4 mb-8">
+            <div className="bg-purple-400 text-center py-2 rounded-md">
+              <h2 className="text-white">Status Avaliações</h2>
+            </div>
+          </div>
+          );
+        case "documents":
+          return (
+            <div className="space-y-4 mb-8">
+            <div className="bg-purple-400 text-center py-2 rounded-md">
+              <h2 className="text-white">Documentação</h2>
+            </div>
+          </div>
+          );
       default:
         return <div className="text-center text-gray-500">Conteúdo não disponível</div>;
     }
