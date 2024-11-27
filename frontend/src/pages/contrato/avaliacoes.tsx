@@ -225,6 +225,7 @@ export function Avaliacoes() {
 
 					{/* Grid Container */}
 					<div className="grid grid-cols-[373px,750px] max-w-full max-h-full gap-4 mt-6">
+						
 						{/* Sidebar */}
 						<div className="max-w-full max-h-full border border-gray-300 rounded-lg overflow-hidden p-6 ml-[60px]">
 							<aside>
