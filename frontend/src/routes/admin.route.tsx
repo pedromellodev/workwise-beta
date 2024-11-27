@@ -11,6 +11,7 @@ export function AdminRouter() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Login />} />
+					<Route path="/recsenha" element={<Recsenha />} />
 					<Route path="/home" element={<Home />} />
 					<Route path="/contratos" element={<Contratos />} />
 					<Route path="/contratos/:nomeFuncionario" element={<Detalhes />} />

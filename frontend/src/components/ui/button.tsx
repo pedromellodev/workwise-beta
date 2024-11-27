@@ -10,7 +10,8 @@ const button = tv({
 				"bg-purple-600 text-violet-50 hover:bg-roxo:detalhes ring-violet-500",
 			secondary: "bg-zinc-900 text-zinc-400 hover:bg-zinc-800 ring-zinc-900",
 			third:"bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500",
-			fourth: "bg-purple-200 text-purple-800 border-2 border-purple-400 font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 active:bg-purple-500"
+			fourth: "bg-purple-200 text-purple-800 border-2 border-purple-400 font-semibold py-2 px-4 rounded-lg transition-all duration-300 hover:bg-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 active:bg-purple-500",
+			fifth: "bg-white text-purple-800 font-semibold py-2 px-4 rounded-lg transition-all duration-300  hover:bg-purple-200  hover:text-white-700 focus:outline-none focus:ring-2 focus:ring-purple-300 transition duration-300"
 
 		},
 		size: {
