@@ -33,7 +33,7 @@ export default function Contratos() {
 	const [showModal, setShowModal] = useState(false); // Controle do modal
 	const navigate = useNavigate();
 
-	const { data, isFetching, refetch,  } = useQuery({
+	const { data, isFetching, refetch  } = useQuery({
 		queryKey: ["funcionarios"],
 		queryFn: getFuncionarios,
 		staleTime: 1000 * 60,
