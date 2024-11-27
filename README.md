@@ -8,3 +8,6 @@ Passo 3: Migrate no Back
 Passo 4: Criação de Superuser (com e-mail e senha)
 Passo 5: Rodar front & Back
 Passo 6: Ao logar utilizar e-mail e senha de superuser
+
+# Erros
+import react_3: npm i @emotion/react @emotion/styled
