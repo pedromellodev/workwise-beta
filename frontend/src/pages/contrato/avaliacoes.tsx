@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, PenSquare } from "lucide-react";
 import workwise_logo from "../../assets/workwise_logo.svg";
+import { Button } from "../../components/ui/button";
 
 export function Avaliacoes() {
 	const navigate = useNavigate();
@@ -44,19 +45,37 @@ export function Avaliacoes() {
 						</button>
 					</div>
 				</header>
-
+				<h1 className="text-2xl font-semibold text-center bg-purple-400 text-white py-2 rounded-lg">
+					Atrasos
+				</h1>
 					{/* Grid Container */}
-					<div className="grid grid-cols-[373px,750px] max-w-full max-h-full gap-4 mt-6">
-						{/* Sidebar */}
+					<div className="grid grid-cols-[500px,500px] max-w-full max-h-full gap-20 mt-6">
+
+						{/* esquerda */}
 						<div className="max-w-full max-h-full border border-gray-300 rounded-lg overflow-hidden p-6 ml-[60px]">
+						<div className="space-y-4">
+            <div className="grid grid-cols-3 gap-4">
+              <Button variant="outline" className="font-medium">
+                Funcionário
+              </Button>
+              <Button variant="outline" className="font-medium">
+                Data de Atraso
+              </Button>
+              <Button variant="outline" className="font-medium">
+                Avaliação
+              </Button>
+            </div>
+				</div>
+			
 						</div>
 
-					{/* Content Area */}
+					{/* direta */}
 					<div
 						className="bg-white w-full max-h-[600px] h-full border border-gray-300 rounded-md p-6 mb-[50px] overflow-y-auto"
 						style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
 					>
 					</div>
+					
 				</div>
 			</div>
 		</main>

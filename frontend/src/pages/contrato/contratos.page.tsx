@@ -24,6 +24,16 @@ interface Employee {
 	status: string;
 }
 
+const handleAddEmployee = (newEmployee) => {
+    console.log("New employee:", newEmployee);
+    refetch();
+    setShowModal(false);
+  };
+
+const filteredEmployees = data ? data.filter((employee) =>
+    employee.nome.toLowerCase().includes(searchTerm.toLowerCase())
+  ) : [];
+
 export default function Contratos() {
 	const handleLogout = () => {
 		navigate("/home");
@@ -203,14 +213,13 @@ export default function Contratos() {
 						</Button>
 					</div>
 				</div>
+				{showModal && (
+					<AddEmployeeModal
+					onClose={() => setShowModal(false)}
+					onSubmit={handleAddEmployee}
+					/>
+				)}
 			</div>
-
-			{/* {showModal && (
-				<AddEmployeeModal
-					onClose={() => setShowModal(false)} // Fechar o modal
-					onSubmit={handleAddEmployee} // Adicionar funcionário
-				/>
-			)} */}
 		</div>
 	);
 }
