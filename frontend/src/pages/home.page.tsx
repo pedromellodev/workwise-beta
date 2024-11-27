@@ -9,7 +9,7 @@ import icon_menu from "../assets/icon_menu.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import { Bell, ChevronLeft, Edit } from "lucide-react";
-import { LogoutIcon } from "@heroicons/react/outline";
+import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { Button } from "../components/ui/button";
 import { Card} from "../components/ui/card";
 import { ChevronDown } from 'lucide-react';
@@ -118,10 +118,10 @@ export function Home() {
 </div>
 
         {/* Ícone de Logout */}
-        <LogoutIcon 
+        <ArrowRightOnRectangleIcon 
           onClick={handleLogout} 
           className="h-6 w-6 text-white-500 cursor-pointer hover:scale-110 duration-300 ease-in-out" 
-          title="Logout"></LogoutIcon>
+          title="Logout"></ArrowRightOnRectangleIcon>
         
 </div>
 
