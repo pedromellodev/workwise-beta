@@ -24,17 +24,14 @@ interface Employee {
 	status: string;
 }
 
-const handleAddEmployee = (newEmployee) => {
-    console.log("New employee:", newEmployee);
-    refetch();
-    setShowModal(false);
-  };
-
-const filteredEmployees = data ? data.filter((employee) =>
-    employee.nome.toLowerCase().includes(searchTerm.toLowerCase())
-  ) : [];
-
 export default function Contratos() {
+	
+	const handleAddEmployee = (newEmployee: any) => {
+		console.log("New employee:", newEmployee);
+		refetch();
+		setShowModal(false);
+	  };
+	
 	const handleLogout = () => {
 		navigate("/home");
 	};
