@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChevronLeft, PenSquare } from "lucide-react";
 import workwise_logo from "../../assets/workwise_logo.svg";
@@ -36,7 +36,7 @@ export function Avaliacoes() {
 						{/* Botão Voltar */}
 						<button
 							type="button"
-							onClick={() => navigate("/contratos")}
+							onClick={() => navigate("/home")}
 							className="px-4 py-2 border rounded-md flex items-center gap-2 hover:bg-purple-400"
 						>
 							<ChevronLeft size={16} />
@@ -49,24 +49,6 @@ export function Avaliacoes() {
 					<div className="grid grid-cols-[373px,750px] max-w-full max-h-full gap-4 mt-6">
 						{/* Sidebar */}
 						<div className="max-w-full max-h-full border border-gray-300 rounded-lg overflow-hidden p-6 ml-[60px]">
-							<aside>
-								<div className="bg-purple-400 text-white font-medium text-center py-4 rounded-md mb-4">
-									Opções
-								</div>
-								{menuItems.map((item) => (
-									<button
-										key={item.id}
-										onClick={() => setSelectedOption(item.id)}
-										className={`w-full text-left font-medium py-3 px-4 rounded-md mt-2 ${
-											selectedOption === item.id
-												? "bg-purple-200"
-												: "hover:bg-gray-100"
-										}`}
-									>
-										{item.label}
-									</button>
-								))}
-							</aside>
 						</div>
 
 					{/* Content Area */}
