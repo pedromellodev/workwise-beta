@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getFuncionario, getFuncionarios } from "../../http/funcionarios/queriesFuncionarios";
 
+//Querys prontos para evitar repetição de criação de dados de funcionarios
+
 export const useFuncionarioData = (nomeFuncionario: string) => {
 	return useQuery({
 		queryKey: ["funcionario", nomeFuncionario],
